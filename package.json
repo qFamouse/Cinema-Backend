@@ -1,6 +1,29 @@
 {
   "dependencies": {
     "express": "^4.17.1",
+    "pg": "^8.7.1",
     "sequelize": "^6.12.0-beta.1"
+  },
+  "name": "cinemaback",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/qFamouse/CinemaBack.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/qFamouse/CinemaBack/issues"
+  },
+  "homepage": "https://github.com/qFamouse/CinemaBack#readme",
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
   }
 }
