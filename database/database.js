@@ -2,6 +2,7 @@ const sequelize = require('../config/database');
 
 const users         = require('../models/User');
 const userInfo      = require('../models/UserInfo');
+const userRole      = require('../models/UserRole');
 const roles         = require('../models/Role');
 const countries     = require('../models/Countries');
 const genres        = require('../models/Genre');
@@ -13,23 +14,49 @@ const seances       = require('../models/Seance');
 const tickets       = require('../models/Ticket');
 const booking       = require('../models/Booking');
 
-users.hasOne(userInfo);
-userInfo.belongsTo(users);
-users.belongsTo(roles);
+// User Info
+users.hasOne(userInfo, { foreignKey: 'userId' });
+userInfo.belongsTo(users, { foreignKey: 'userId' });
 
+// Users roles 
+users.belongsToMany(roles, { through: 'users_roles' });
+roles.belongsToMany(users, { through: 'users_roles' });
+
+// Movies 
 movies.belongsTo(genres);
+genres.hasMany(movies);
+
 movies.belongsTo(countries);
+countries.hasMany(movies);
 
+// Reviews
 reviews.belongsTo(movies);
+movies.hasMany(reviews);
+
 reviews.belongsTo(users);
+users.hasMany(reviews);
 
-seances.hasOne(halls);
-seances.hasOne(movies);
+// Seanses
+seances.belongsTo(halls);
+halls.hasMany(seances);
 
-places.hasOne(hall);
+seances.belongsTo(movies);
+movies.hasMany(seances);
 
-tickets.hasOne(seances);
-tickets.hasOne(places);
+// Places
+places.belongsTo(halls);
+halls.hasMany(places);
 
-booking.hasOne(users);
-booking.hasOne(tickets);
+// Tickets
+tickets.belongsTo(seances);
+seances.hasMany(tickets);
+
+tickets.belongsTo(places);
+places.hasMany(tickets);
+
+// Booking
+booking.belongsTo(users);
+users.hasMany(booking);
+
+booking.belongsTo(tickets);
+tickets.hasMany(booking);
