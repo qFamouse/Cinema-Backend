@@ -1,62 +1,62 @@
 const sequelize = require('../config/database');
 
-const users         = require('../models/User');
-const userInfo      = require('../models/UserInfo');
-const userRole      = require('../models/UserRole');
-const roles         = require('../models/Role');
-const countries     = require('../models/Countries');
-const genres        = require('../models/Genre');
-const movies        = require('../models/Movie');
-const reviews       = require('../models/Review');
-const halls         = require('../models/Hall');
-const places        = require('../models/Place');
-const seances       = require('../models/Seance');
-const tickets       = require('../models/Ticket');
-const booking       = require('../models/Booking');
+const user       = require('../models/User');
+const userInfo   = require('../models/UserInfo');
+const userRole   = require('../models/UserRole');
+const role       = require('../models/Role');
+const countrie   = require('../models/Countries');
+const genre      = require('../models/Genre');
+const movie      = require('../models/Movie');
+const review     = require('../models/Review');
+const hall       = require('../models/Hall');
+const place      = require('../models/Place');
+const seance     = require('../models/Seance');
+const ticket     = require('../models/Ticket');
+const booking    = require('../models/Booking');
 
 // User Info
-users.hasOne(userInfo, { foreignKey: 'userId' });
-userInfo.belongsTo(users, { foreignKey: 'userId' });
+user.hasOne(userInfo, { foreignKey: 'userId' });
+userInfo.belongsTo(user, { foreignKey: 'userId' });
 
 // Users roles 
-users.belongsToMany(roles, { through: 'users_roles' });
-roles.belongsToMany(users, { through: 'users_roles' });
+user.belongsToMany(role, { through: 'users_roles' });
+role.belongsToMany(user, { through: 'users_roles' });
 
 // Movies 
-movies.belongsTo(genres);
-genres.hasMany(movies);
+movie.belongsTo(genre);
+genre.hasMany(movie);
 
-movies.belongsTo(countries);
-countries.hasMany(movies);
+movie.belongsTo(countrie);
+countrie.hasMany(movie);
 
 // Reviews
-reviews.belongsTo(movies);
-movies.hasMany(reviews);
+review.belongsTo(movie);
+movie.hasMany(review);
 
-reviews.belongsTo(users);
-users.hasMany(reviews);
+review.belongsTo(user);
+user.hasMany(review);
 
 // Seanses
-seances.belongsTo(halls);
-halls.hasMany(seances);
+seance.belongsTo(hall);
+hall.hasMany(seance);
 
-seances.belongsTo(movies);
-movies.hasMany(seances);
+seance.belongsTo(movie);
+movie.hasMany(seance);
 
 // Places
-places.belongsTo(halls);
-halls.hasMany(places);
+place.belongsTo(hall);
+hall.hasMany(place);
 
 // Tickets
-tickets.belongsTo(seances);
-seances.hasMany(tickets);
+ticket.belongsTo(seance);
+seance.hasMany(ticket);
 
-tickets.belongsTo(places);
-places.hasMany(tickets);
+ticket.belongsTo(place);
+place.hasMany(ticket);
 
 // Booking
-booking.belongsTo(users);
-users.hasMany(booking);
+booking.belongsTo(user);
+user.hasMany(booking);
 
-booking.belongsTo(tickets);
-tickets.hasMany(booking);
+booking.belongsTo(ticket);
+ticket.hasMany(booking);
