@@ -64,6 +64,7 @@ const UserInfo = sequelize.define('user_info',
 },
 {
     freezeTableName: true, // ? Disable adding 's' suffix to table name
+    createdAt: false
 }
 );
 
