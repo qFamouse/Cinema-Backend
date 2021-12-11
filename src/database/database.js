@@ -1,10 +1,12 @@
+// Connect to database
 const sequelize = require('../config/database');
 
+// Loading Models //
 const user       = require('../models/User');
 const userInfo   = require('../models/UserInfo');
 const userRole   = require('../models/UserRole');
 const role       = require('../models/Role');
-const countrie   = require('../models/Countries');
+const country   = require('../models/Countries');
 const genre      = require('../models/Genre');
 const movie      = require('../models/Movie');
 const review     = require('../models/Review');
@@ -26,8 +28,8 @@ role.belongsToMany(user, { through: 'users_roles' });
 movie.belongsTo(genre);
 genre.hasMany(movie);
 
-movie.belongsTo(countrie);
-countrie.hasMany(movie);
+movie.belongsTo(country);
+country.hasMany(movie);
 
 // Reviews
 review.belongsTo(movie);
@@ -60,3 +62,9 @@ user.hasMany(booking);
 
 booking.belongsTo(ticket);
 ticket.hasMany(booking);
+
+sequelize.sync().then(result => {
+    //console.log(result);
+}).catch(err => console.log(err));
+
+module.exports = sequelize;
