@@ -1,7 +1,7 @@
 const express = require('express');
 
 // Database //
-const db = require('./config/database')
+const db = require('./src/config/database')
 
 
 // Test BD
@@ -14,20 +14,3 @@ const app = express();
 const PORT = process.env.PORT || 8080
 
 app.listen(PORT, () => console.log('server is started'));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
