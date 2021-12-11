@@ -17,7 +17,7 @@ const ticket     = require('../models/Ticket');
 const booking    = require('../models/Booking');
 
 // User Info
-user.hasOne(userInfo, { foreignKey: 'userId' });
+user.hasOne(userInfo, { foreignKey: 'userId', as: 'UserInfo' });
 userInfo.belongsTo(user, { foreignKey: 'userId' });
 
 // Users roles 
