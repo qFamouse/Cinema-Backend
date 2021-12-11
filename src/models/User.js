@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../config/database');
+const UserConfig = require('../config/ModelsConfig.json');
 
 const User = sequelize.define('user', {
     id: {
@@ -16,18 +17,11 @@ const User = sequelize.define('user', {
         unique: true,
         field: 'login'
     },
-    password: { // TODO: Size of password can be less
-        type: Sequelize.STRING(30),
+    password: {
+        type: Sequelize.STRING(60),
         allowNull: false,
         unique: false,
         field: 'password'
-    },
-    roleId: {
-        type: Sequelize.INTEGER.UNSIGNED,
-        allowNull: false,
-        unique: false,
-        field: 'role_id',
-        defaultValue: 1 // ? The role of regular user 
     }
 });
 
