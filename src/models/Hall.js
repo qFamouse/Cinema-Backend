@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const sequelize = require('../config/database');
 
-const Hall = sequelize.define('Hall', {
+const Hall = sequelize.define('hall', {
     id: {
         type: Sequelize.INTEGER.UNSIGNED,
         primaryKey: true,
