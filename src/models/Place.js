@@ -41,6 +41,9 @@ const Place = sequelize.define('place', {
         field: 'is_vip',
         defaultValue: false
     }
+},
+{
+    timestamps: false
 });
 
 module.exports = Place;
