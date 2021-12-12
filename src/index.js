@@ -3,6 +3,8 @@ const app = express();
 
 // routers //
 const usersRouter = require('./routers/UsersRoute');
+const rolesRouter = require('./routers/RolesRoute');
+const countriesRouter = require('./routers/CountriesRoute');
 
 // Database //
 const sequelizeDB = require('./database/database');
@@ -13,8 +15,11 @@ sequelizeDB.authenticate()
 
 //
 
-app.use(express.json());
+app.use(express.json()); // For answers in JSON
 
- app.use(usersRouter);
+app.use(usersRouter);
+app.use(rolesRouter);
+app.use(countriesRouter);
+
 
 app.listen(8080, () => console.log('server is started'));
