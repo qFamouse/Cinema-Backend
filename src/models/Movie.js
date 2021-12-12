@@ -29,7 +29,7 @@ const Movie = sequelize.define('movie', {
         field: 'poster'
     },
     duration: {
-        type: Sequelize.DATE, // TODO: Datatype time not exist
+        type: Sequelize.TIME,
         allowNull: false,
         unique: false,
         field: 'duration'
@@ -41,7 +41,7 @@ const Movie = sequelize.define('movie', {
         field: 'age_limit'
     },
     date: {
-        type: Sequelize.DATE,
+        type: Sequelize.DATEONLY,
         allowNull: false,
         unique: false,
         field: 'date'
