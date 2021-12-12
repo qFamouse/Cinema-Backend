@@ -4,6 +4,7 @@ class MoviesService {
     async GetAll() {
         return await movieRepository.GetAll();
     }
+
     async GetDetailedById(movieId) {
         return await movieRepository.GetDetailedById(movieId);
     }
