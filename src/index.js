@@ -5,6 +5,8 @@ const app = express();
 const usersRouter = require('./routers/UsersRoute');
 const rolesRouter = require('./routers/RolesRoute');
 const countriesRouter = require('./routers/CountriesRoute');
+const genresRouter = require('./routers/GenresRoute');
+const moviesRouter = require('./routers/MoviesRoute');
 
 // Database //
 const sequelizeDB = require('./database/database');
@@ -20,6 +22,8 @@ app.use(express.json()); // For answers in JSON
 app.use(usersRouter);
 app.use(rolesRouter);
 app.use(countriesRouter);
+app.use(genresRouter);
+app.use(moviesRouter);
 
 
 app.listen(8080, () => console.log('server is started'));
