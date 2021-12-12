@@ -2,9 +2,6 @@ const sequelize = require('../database/database');
 const Genre = require('../models/Genre');
 const Country = require('../models/Countries');
 
-const countryRepository = require('./CountryRepository');
-const genreRepository = require('./GenreRepository');
-
 class MovieRepository {
     async GetAll() {
         return await sequelize.models.movie.findAll();
@@ -40,12 +37,36 @@ class MovieRepository {
         return movie;
     }
 
-    async EditById(roleId, role) {
+    async EditById(movieId, movie) {
+        await sequelize.models.movie.update({
+            title: movie.title,
+            genreId: movie.genreId,
+            poster: movie.poster,
+            duration: movie.duration,
+            ageLimit: movie.ageLimit,
+            date: movie.date,
+            countryId: movie.countryId,
+            director: movie.director,
+            actors: movie.actors,
+            synopsis: movie.synopsis,
+            startRentalDate: movie.startRentalDate,
+            endRentalDate: movie.endRentalDate,
+            updatedAt: Date.now()
+        }, {
+            where: {
+                id: movieId
+            }
+        });
 
+        return await this.GetDetailedById(movieId);
     }
 
-    async DeleteById(roleId) {
-
+    async DeleteById(movieId) {
+        await sequelize.models.movie.destroy({
+            where: {
+                id: movieId
+            }
+        });
     }
 }
 

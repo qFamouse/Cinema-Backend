@@ -9,15 +9,15 @@ class MoviesService {
     }
 
     async CreateOne(movie) {
-        return await movieRepository.CreateOne(movie)
+        return await movieRepository.CreateOne(movie);
     }
 
-    async EditById() {
-
+    async EditById(movieId, movie) {
+        return await movieRepository.EditById(movieId, movie);
     }
 
-    async DeleteById() {
-
+    async DeleteById(movieId) {
+        return await movieRepository.DeleteById(movieId);
     }
 }
 
