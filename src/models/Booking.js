@@ -22,6 +22,10 @@ const Booking = sequelize.define('booking', {
         unique: false,
         field: 'ticket_id'
     }
+},
+{
+    updatedAt: false,
+    freezeTableName: true
 });
 
 module.exports = Booking;
