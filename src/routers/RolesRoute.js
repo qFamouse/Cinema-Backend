@@ -9,4 +9,4 @@ router.post('/roles', rolesController.CreateOne);
 router.patch('/roles/:id', rolesController.EditById);
 router.delete('/roles/:id', rolesController.DeleteById);
 
-module.exports= router;
+module.exports = router;
