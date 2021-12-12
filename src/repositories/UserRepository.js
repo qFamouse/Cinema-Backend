@@ -1,5 +1,4 @@
 const sequelize = require('../database/database');
-const userInfo = require("../models/UserInfo");
 
 class UserRepository {
     async GetAll() {
@@ -7,7 +6,7 @@ class UserRepository {
     }
 
     async GetById(userId) {
-        return await sequelize.models.user.findAll({
+        return await sequelize.models.user.findOne({
             where: {
                 id: userId
             }
@@ -48,7 +47,7 @@ class UserRepository {
     }
 
     async EditById(userId, user, userInfo) {
-        user = await sequelize.models.user.update({
+        await sequelize.models.user.update({
             login: user.login,
             password: user.password ?? undefined
         }, {
