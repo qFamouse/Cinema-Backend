@@ -10,11 +10,11 @@ const Review = sequelize.define('review', {
         unique: true,
         field: 'id'
     },
-    hallId: {
+    movieId: {
         type: Sequelize.INTEGER.UNSIGNED,
         allowNull: false,
         unique: false,
-        field: 'hall_id'
+        field: 'movie_id'
     },
     userId: {
         type: Sequelize.INTEGER.UNSIGNED,
@@ -28,7 +28,7 @@ const Review = sequelize.define('review', {
         unique: false,
         field: 'rating'
     },
-    rating: {
+    review: {
         type: Sequelize.STRING,
         allowNull: false,
         unique: false,
