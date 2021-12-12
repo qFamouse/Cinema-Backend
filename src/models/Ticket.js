@@ -22,6 +22,9 @@ const Ticket = sequelize.define('ticket', {
         unique: false,
         field: 'place_id'
     }
+},
+{
+    timestamps: false
 });
 
 module.exports = Ticket;
