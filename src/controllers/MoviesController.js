@@ -5,7 +5,7 @@ class MoviesController {
         res.send(await moviesService.GetAll());
     }
 
-    async GetById(req, res) {
+    async GetDetailedById(req, res) {
         res.send(await moviesService.GetDetailedById(req.params.id))
     }
 
