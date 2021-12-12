@@ -12,6 +12,7 @@ const hallsRouter = require('./routers/HallsRoute');
 const placesRouter = require('./routers/PlacesRoute');
 const ticketsRouter = require('./routers/TicketsRoute');
 const bookingRouter = require('./routers/BookingRoute');
+const reviewsRouter = require('./routers/ReviewsRoute');
 
 // Database //
 const sequelizeDB = require('./database/database');
@@ -34,5 +35,6 @@ app.use(hallsRouter);
 app.use(placesRouter);
 app.use(ticketsRouter);
 app.use(bookingRouter);
+app.use(reviewsRouter);
 
 app.listen(8080, () => console.log('server is started'));
