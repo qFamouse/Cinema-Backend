@@ -22,6 +22,9 @@ const UserRole = sequelize.define('users_role', {
         unique: false,
         field: 'role_id'
     }
+},
+{
+    timestamps: false
 });
 
 module.exports = UserRole;
