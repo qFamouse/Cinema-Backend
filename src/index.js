@@ -8,6 +8,7 @@ const countriesRouter = require('./routers/CountriesRoute');
 const genresRouter = require('./routers/GenresRoute');
 const moviesRouter = require('./routers/MoviesRoute');
 const seancesRouter = require('./routers/SeancesRoute');
+const hallsRouter = require('./routers/HallsRoute');
 
 // Database //
 const sequelizeDB = require('./database/database');
@@ -26,6 +27,7 @@ app.use(countriesRouter);
 app.use(genresRouter);
 app.use(moviesRouter);
 app.use(seancesRouter);
+app.use(hallsRouter);
 
 
 app.listen(8080, () => console.log('server is started'));
