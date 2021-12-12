@@ -49,7 +49,7 @@ class UsersController {
 
     async DeleteById(req, res) {
         await usersService.DeleteById(req.params.id);
-        res.send("Ok");
+        res.send('Ok');
     }
 }
 
