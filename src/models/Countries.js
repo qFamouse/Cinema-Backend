@@ -19,6 +19,7 @@ const Countries = sequelize.define('countries', {
 },
 {
     freezeTableName: true, // ? Disable adding 's' suffix to table name
+    timestamps: false
 });
 
 module.exports = Countries;
