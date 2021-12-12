@@ -17,7 +17,7 @@ class MovieRepository {
     }
 
     async CreateOne(movie) {
-        movie = await sequelize.models.movie.create({
+        return await sequelize.models.movie.create({
             title: movie.title,
             genreId: movie.genreId,
             poster: movie.poster,
@@ -33,8 +33,6 @@ class MovieRepository {
             createdAt: Date.now(),
             updatedAt: Date.now()
         });
-
-        return movie;
     }
 
     async EditById(movieId, movie) {
