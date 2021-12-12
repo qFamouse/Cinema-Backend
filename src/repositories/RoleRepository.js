@@ -5,10 +5,10 @@ class RoleRepository {
         return await sequelize.models.role.findAll();
     }
 
-    async GetById(userId) {
+    async GetById(roleId) {
         return await sequelize.models.role.findOne({
             where: {
-                id: userId
+                id: roleId
             }
         });
     }
