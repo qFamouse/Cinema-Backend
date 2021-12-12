@@ -28,6 +28,9 @@ const Hall = sequelize.define('hall', {
         unique: false,
         field: 'place_count'
     }
+},
+{
+    timestamps: false
 });
 
 module.exports = Hall;
