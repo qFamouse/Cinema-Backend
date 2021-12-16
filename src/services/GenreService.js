@@ -9,7 +9,7 @@ class GenreService {
     }
 
     async CreateOne(genre) {
-        return await genreRepository.CreateOne(genre);
+        return await genreRepository.Create(genre);
     }
 
     async EditById(genreId, genre) {

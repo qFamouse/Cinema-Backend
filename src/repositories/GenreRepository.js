@@ -13,16 +13,12 @@ class GenreRepository {
         });
     }
 
-    async CreateOne(genre) {
-        return await sequelize.models.genre.create({
-            name: genre.name
-        })
+    async Create(genre) {
+        return sequelize.models.genre.create(genre)
     }
 
     async EditById(genreId, genre) {
-        await sequelize.models.genre.update({
-            name: genre.name
-        }, {
+        await sequelize.models.genre.update(genre, {
             where: {
                 id: genreId
             }
