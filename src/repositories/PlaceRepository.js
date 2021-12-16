@@ -1,7 +1,7 @@
 const sequelize = require('../database/database');
 const Hall = require("../models/Hall");
 
-class PlacesRepository {
+class PlaceRepository {
     async GetAll() {
         return await sequelize.models.place.findAll();
     }
@@ -50,4 +50,4 @@ class PlacesRepository {
     }
 }
 
-module.exports = new PlacesRepository();
+module.exports = new PlaceRepository();

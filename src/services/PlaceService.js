@@ -1,4 +1,4 @@
-const placeRepository = require('../repositories/PlacesRepository');
+const placeRepository = require('../repositories/PlaceRepository');
 
 class PlaceService {
     async GetAll() {

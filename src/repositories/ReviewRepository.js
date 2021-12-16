@@ -2,7 +2,7 @@ const sequelize = require('../database/database');
 const Movie = require('../models/Movie');
 const User = require('../models/User');
 
-class ReviewsRepository {
+class ReviewRepository {
     async GetAll() {
         return await sequelize.models.review.findAll();
     }
@@ -52,4 +52,4 @@ class ReviewsRepository {
     }
 }
 
-module.exports = new ReviewsRepository();
+module.exports = new ReviewRepository();

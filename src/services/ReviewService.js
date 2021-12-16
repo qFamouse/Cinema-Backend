@@ -1,4 +1,4 @@
-const reviewsRepository = require('../repositories/ReviewsRepository');
+const reviewsRepository = require('../repositories/ReviewRepository');
 
 class ReviewService {
     async GetAll() {
