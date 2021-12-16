@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const validate = require('../middleware/Validate');
-const MovieScheme = require('../Schemes/MovieScheme');
+const MovieScheme = require('../schemes/MovieScheme');
 
 const moviesController = require('../controllers/MoviesController');
 
