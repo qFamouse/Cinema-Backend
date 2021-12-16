@@ -10,7 +10,7 @@ class MovieService {
     }
 
     async CreateOne(movie) {
-        return await movieRepository.CreateOne(movie);
+        return await movieRepository.Create(movie);
     }
 
     async EditById(movieId, movie) {

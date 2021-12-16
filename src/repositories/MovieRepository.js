@@ -16,41 +16,12 @@ class MovieRepository {
         });
     }
 
-    async CreateOne(movie) {
-        return await sequelize.models.movie.create({
-            title: movie.title,
-            genreId: movie.genreId,
-            poster: movie.poster,
-            duration: movie.duration,
-            ageLimit: movie.ageLimit,
-            date: movie.date,
-            countryId: movie.countryId,
-            director: movie.director,
-            actors: movie.actors,
-            synopsis: movie.synopsis,
-            startRentalDate: movie.startRentalDate,
-            endRentalDate: movie.endRentalDate,
-            createdAt: Date.now(),
-            updatedAt: Date.now()
-        });
+    async Create(movie) {
+        return sequelize.models.movie.create(movie);
     }
 
     async EditById(movieId, movie) {
-        await sequelize.models.movie.update({
-            title: movie.title,
-            genreId: movie.genreId,
-            poster: movie.poster,
-            duration: movie.duration,
-            ageLimit: movie.ageLimit,
-            date: movie.date,
-            countryId: movie.countryId,
-            director: movie.director,
-            actors: movie.actors,
-            synopsis: movie.synopsis,
-            startRentalDate: movie.startRentalDate,
-            endRentalDate: movie.endRentalDate,
-            updatedAt: Date.now()
-        }, {
+        await sequelize.models.movie.update(movie, {
             where: {
                 id: movieId
             }

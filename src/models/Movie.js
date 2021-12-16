@@ -84,4 +84,13 @@ const Movie = sequelize.define('movie', {
     }
 });
 
+Movie.addHook('beforeCreate', (user, options) => {
+    user.createdAt = Date.now();
+    user.updatedAt = Date.now();
+});
+
+Movie.addHook('beforeUpdate', (user, options) => {
+    user.updatedAt = Date.now();
+})
+
 module.exports = Movie;
