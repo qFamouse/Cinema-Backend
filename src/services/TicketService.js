@@ -10,7 +10,7 @@ class TicketService {
     }
 
     async CreateOne(ticket) {
-        return await ticketRepository.CreateOne(ticket);
+        return await ticketRepository.Create(ticket);
     }
 
     async EditById(ticketId, ticket) {

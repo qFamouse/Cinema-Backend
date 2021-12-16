@@ -16,7 +16,7 @@ class TicketRepository {
         });
     }
 
-    async CreateOne(ticket) {
+    async Create(ticket) {
         return sequelize.models.ticket.create(ticket); // await redundant because is async method and create also async method
     }
 
