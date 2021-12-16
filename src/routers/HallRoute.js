@@ -3,10 +3,10 @@ const router = express.Router();
 
 const hallController = require('../controllers/HallController');
 
-router.get('/halls', hallController.GetAll);
-router.get('/halls/:id', hallController.GetById);
-router.post('/halls', hallController.CreateOne);
-router.patch('/halls/:id', hallController.EditById);
-router.delete('/halls/:id', hallController.DeleteById);
+router.get('/', hallController.GetAll);
+router.get('/:id', hallController.GetById);
+router.post('/', hallController.CreateOne);
+router.patch('/:id', hallController.EditById);
+router.delete('/:id', hallController.DeleteById);
 
 module.exports = router;
