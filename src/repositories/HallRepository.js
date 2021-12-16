@@ -13,20 +13,12 @@ class HallRepository {
         })
     }
 
-    async CreateOne(hall) {
-        return await sequelize.models.hall.create({
-            name: hall.name,
-            floorCount: hall.floorCount,
-            placeCount: hall.placeCount
-        })
+    async Create(hall) {
+        return sequelize.models.hall.create(hall)
     }
 
     async EditById(hallId, hall) {
-        await sequelize.models.hall.update({
-            name: hall.name,
-            floorCount: hall.floorCount,
-            placeCount: hall.placeCount
-        }, {
+        await sequelize.models.hall.update(hall, {
             where: {
                 id: hallId
             }

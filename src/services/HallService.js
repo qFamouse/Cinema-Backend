@@ -10,7 +10,7 @@ class HallService {
     }
 
     async CreateOne(hall) {
-        return await hallRepository.CreateOne(hall);
+        return await hallRepository.Create(hall);
     }
 
     async EditById(hallId, hall) {
