@@ -10,7 +10,7 @@ class PlaceService {
     }
 
     async CreateOne(place) {
-        return await placeRepository.CreateOne(place);
+        return await placeRepository.Create(place);
     }
 
     async EditById(placeId, place) {

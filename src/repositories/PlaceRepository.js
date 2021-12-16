@@ -15,24 +15,12 @@ class PlaceRepository {
         });
     }
 
-    async CreateOne(place) {
-        return await sequelize.models.place.create({
-            hallId: place.hallId,
-            floor: place.floor,
-            seat: place.seat,
-            row: place.row,
-            isVip: place.isVip
-        });
+    async Create(place) {
+        return sequelize.models.place.create(place);
     }
 
     async EditById(placeId, place) {
-        await sequelize.models.place.update({
-            hallId: place.hallId,
-            floor: place.floor,
-            seat: place.seat,
-            row: place.row,
-            isVip: place.isVip
-        }, {
+        await sequelize.models.place.update(place, {
             where: {
                 id: placeId
             }
