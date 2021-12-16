@@ -9,7 +9,7 @@ class CountryService {
     }
 
     async CreateOne(country) {
-        return await countryRepository.CreateOne(country);
+        return await countryRepository.Create(country);
     }
 
     async EditById(countryId, country) {

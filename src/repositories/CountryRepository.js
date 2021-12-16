@@ -13,16 +13,12 @@ class CountryRepository {
         })
     }
 
-    async CreateOne(country) {
-        return await sequelize.models.countries.create({
-            name: country.name
-        })
+    async Create(country) {
+        return sequelize.models.countries.create(country)
     }
 
     async EditById(countryId, country) {
-        await sequelize.models.countries.update({
-            name: country.name
-        }, {
+        await sequelize.models.countries.update(country, {
             where: {
                 id: countryId
             }
