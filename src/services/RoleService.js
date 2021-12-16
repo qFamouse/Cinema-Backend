@@ -9,7 +9,7 @@ class RoleService {
     }
 
     async CreateOne(role) {
-        return await roleRepository.CreateOne(role);
+        return await roleRepository.Create(role);
     }
 
     async EditById(roleId, role) {

@@ -13,16 +13,12 @@ class RoleRepository {
         });
     }
 
-    async CreateOne(role) {
-        return await sequelize.models.role.create({
-            name: role.name
-        })
+    async Create(role) {
+        return sequelize.models.role.create(role)
     }
 
     async EditById(roleId, role) {
-        await sequelize.models.role.update({
-            name: role.name
-        }, {
+        await sequelize.models.role.update(role, {
             where: {
                 id: roleId
             }
