@@ -17,17 +17,11 @@ class TicketRepository {
     }
 
     async CreateOne(ticket) {
-        return await sequelize.models.ticket.create({
-            seanceId: ticket.seanceId,
-            placeId: ticket.placeId
-        });
+        return sequelize.models.ticket.create(ticket); // await redundant because is async method and create also async method
     }
 
     async EditById(ticketId, ticket) {
-        await sequelize.models.ticket.update({
-            seanceId: ticket.seanceId,
-            placeId: ticket.placeId
-        }, {
+        await sequelize.models.ticket.update(ticket, {
             where: {
                 id: ticketId
             }
