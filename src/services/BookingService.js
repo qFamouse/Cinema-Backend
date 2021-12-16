@@ -10,7 +10,7 @@ class BookingService {
     }
 
     async CreateOne(booking) {
-        return await bookingRepository.CreateOne(booking);
+        return await bookingRepository.Create(booking);
     }
 
     async EditById(bookingId, booking) {

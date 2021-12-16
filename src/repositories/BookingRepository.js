@@ -17,18 +17,12 @@ class BookingRepository {
         });
     }
 
-    async CreateOne(booking) {
-        return await sequelize.models.booking.create({
-            userId: booking.userId,
-            ticketId: booking.ticketId
-        });
+    async Create(booking) {
+        return sequelize.models.booking.create(booking);
     }
 
     async EditById(bookingId, booking) {
-        await sequelize.models.booking.update({
-            userId: booking.userId,
-            ticketId: booking.ticketId
-        }, {
+        await sequelize.models.booking.update(booking, {
             where: {
                 id: bookingId
             }
