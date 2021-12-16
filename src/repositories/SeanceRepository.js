@@ -17,23 +17,12 @@ class SeanceRepository {
         });
     }
 
-    async CreateOne(seance) {
-        return await sequelize.models.seance.create({
-            hallId: seance.hallId,
-            movieId: seance.movieId,
-            date: seance.date,
-            createdAt: Date.now(),
-            updatedAt: Date.now()
-        });
+    async Create(seance) {
+        return sequelize.models.seance.create(seance);
     }
 
     async EditById(seanceId, seance) {
-        await sequelize.models.seance.update({
-            hallId: seance.hallId,
-            movieId: seance.movieId,
-            date: seance.date,
-            updatedAt: Date.now()
-        }, {
+        await sequelize.models.seance.update(seance, {
             where: {
                 id: seanceId
             }

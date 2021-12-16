@@ -30,4 +30,14 @@ const Seance = sequelize.define('seance', {
     }
 });
 
+Seance.addHook('beforeCreate', (user, options) => {
+    user.createdAt = Date.now();
+    user.updatedAt = Date.now();
+});
+
+Seance.addHook('beforeUpdate', (user, options) => {
+    user.updatedAt = Date.now();
+})
+
+
 module.exports = Seance;

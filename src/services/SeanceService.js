@@ -10,7 +10,7 @@ class SeanceService {
     }
 
     async CreateOne(seance) {
-        return await seanceRepository.CreateOne(seance);
+        return await seanceRepository.Create(seance);
     }
 
     async EditById(seanceId, seance) {
