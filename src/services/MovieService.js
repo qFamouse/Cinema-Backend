@@ -1,6 +1,6 @@
 const movieRepository = require('../repositories/MovieRepository');
 
-class MoviesService {
+class MovieService {
     async GetAll() {
         return await movieRepository.GetAll();
     }
@@ -22,4 +22,4 @@ class MoviesService {
     }
 }
 
-module.exports = new MoviesService();
+module.exports = new MovieService();

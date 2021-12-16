@@ -1,12 +1,12 @@
-const reviewsService = require('../services/ReviewsService');
+const reviewService = require('../services/ReviewService');
 
-class ReviewsController {
+class ReviewController {
     async GetAll(req, res) {
-        res.send(await reviewsService.GetAll());
+        res.send(await reviewService.GetAll());
     }
 
     async GetDetailedById(req, res) {
-        res.send(await reviewsService.GetDetailedById(req.params.id))
+        res.send(await reviewService.GetDetailedById(req.params.id))
     }
 
     async CreateOne(req, res) {
@@ -17,7 +17,7 @@ class ReviewsController {
             review: req.body.review
         };
 
-        res.send(await reviewsService.CreateOne(review));
+        res.send(await reviewService.CreateOne(review));
     }
 
     async EditById(req, res) {
@@ -28,13 +28,13 @@ class ReviewsController {
             review: req.body.review
         };
 
-        res.send(await reviewsService.EditById(req.params.id, review));
+        res.send(await reviewService.EditById(req.params.id, review));
     }
 
     async DeleteById(req, res) {
-        await reviewsService.DeleteById(req.params.id);
+        await reviewService.DeleteById(req.params.id);
         res.send('Ok');
     }
 }
 
-module.exports = new ReviewsController();
+module.exports = new ReviewController();

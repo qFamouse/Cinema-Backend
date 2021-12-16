@@ -1,14 +1,13 @@
-const express = require('express');
-const usersService = require('../services/UsersService');
+const userService = require('../services/UserService');
 const UserConfig = require('../config/ModelsConfig.json');
 
 
-class UsersController {
+class UserController {
     async GetAll(req, res) {
-        res.send(await usersService.GetAll());
+        res.send(await userService.GetAll());
     }
     async GetById(req, res) {
-        res.send(await usersService.GetById(req.params.id))
+        res.send(await userService.GetById(req.params.id))
     }
     async CreateOne(req, res) {
         let user = {
@@ -25,7 +24,7 @@ class UsersController {
             phone: req.body.phone ?? null
         };
 
-        res.send(await usersService.CreateOne(user, userInfo))
+        res.send(await userService.CreateOne(user, userInfo))
     }
 
     async EditById(req, res) {
@@ -44,13 +43,13 @@ class UsersController {
             phone: req.body.phone
         };
 
-        res.send(await usersService.EditById(userId, user, userInfo));
+        res.send(await userService.EditById(userId, user, userInfo));
     }
 
     async DeleteById(req, res) {
-        await usersService.DeleteById(req.params.id);
+        await userService.DeleteById(req.params.id);
         res.send('Ok');
     }
 }
 
-module.exports = new UsersController();
+module.exports = new UserController();

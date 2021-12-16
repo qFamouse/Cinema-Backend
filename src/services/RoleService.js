@@ -1,6 +1,6 @@
 const roleRepository = require('../repositories/RoleRepository');
 
-class RolesService {
+class RoleService {
     async GetAll() {
         return await roleRepository.GetAll();
     }
@@ -21,4 +21,4 @@ class RolesService {
     }
 }
 
-module.exports = new RolesService();
+module.exports = new RoleService();

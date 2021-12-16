@@ -2,17 +2,17 @@ const express = require('express');
 const app = express();
 
 // routers //
-const usersRouter = require('./routers/UsersRoute');
-const rolesRouter = require('./routers/RolesRoute');
-const countriesRouter = require('./routers/CountriesRoute');
-const genresRouter = require('./routers/GenresRoute');
-const moviesRouter = require('./routers/MoviesRoute');
-const seancesRouter = require('./routers/SeancesRoute');
-const hallsRouter = require('./routers/HallsRoute');
-const placesRouter = require('./routers/PlacesRoute');
-const ticketsRouter = require('./routers/TicketsRoute');
+const usersRouter = require('./routers/UserRoute');
+const rolesRouter = require('./routers/RoleRoute');
+const countriesRouter = require('./routers/CountryRoute');
+const genresRouter = require('./routers/GenreRoute');
+const moviesRouter = require('./routers/MovieRoute');
+const seancesRouter = require('./routers/SeanceRoute');
+const hallsRouter = require('./routers/HallRoute');
+const placesRouter = require('./routers/PlaceRoute');
+const ticketsRouter = require('./routers/TicketRoute');
 const bookingRouter = require('./routers/BookingRoute');
-const reviewsRouter = require('./routers/ReviewsRoute');
+const reviewsRouter = require('./routers/ReviewRoute');
 
 // Database //
 const sequelizeDB = require('./database/database');

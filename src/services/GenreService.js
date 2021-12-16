@@ -1,6 +1,6 @@
 const genreRepository = require('../repositories/GenreRepository');
 
-class GenresService {
+class GenreService {
     async GetAll() {
         return await genreRepository.GetAll();
     }
@@ -21,4 +21,4 @@ class GenresService {
     }
 }
 
-module.exports = new GenresService();
+module.exports = new GenreService();

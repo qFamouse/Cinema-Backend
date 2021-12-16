@@ -1,7 +1,7 @@
 const userRepository = require('../repositories/UserRepository');
 const crypt = require("../utils/Crypt");
 
-class UsersService {
+class UserService {
     async GetAll() {
         return await userRepository.GetAll();
     }
@@ -29,4 +29,4 @@ class UsersService {
     }
 }
 
-module.exports = new UsersService();
+module.exports = new UserService();

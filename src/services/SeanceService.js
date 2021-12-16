@@ -1,6 +1,6 @@
 const seanceRepository = require('../repositories/SeancesRepository');
 
-class SeancesService {
+class SeanceService {
     async GetAll() {
         return await seanceRepository.GetAll();
     }
@@ -22,4 +22,4 @@ class SeancesService {
     }
 }
 
-module.exports = new SeancesService();
+module.exports = new SeanceService();

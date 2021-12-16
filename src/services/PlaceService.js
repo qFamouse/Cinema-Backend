@@ -1,6 +1,6 @@
 const placeRepository = require('../repositories/PlacesRepository');
 
-class PlacesService {
+class PlaceService {
     async GetAll() {
         return await placeRepository.GetAll();
     }
@@ -22,4 +22,4 @@ class PlacesService {
     }
 }
 
-module.exports = new PlacesService();
+module.exports = new PlaceService();

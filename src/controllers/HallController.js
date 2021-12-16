@@ -1,12 +1,12 @@
-const hallsService = require('../services/HallsService');
+const hallService = require('../services/HallService');
 
-class HallsController {
+class HallController {
     async GetAll(req, res) {
-        res.send(await hallsService.GetAll());
+        res.send(await hallService.GetAll());
     }
 
     async GetById(req, res) {
-        res.send(await hallsService.GetById(req.params.id))
+        res.send(await hallService.GetById(req.params.id))
     }
 
     async CreateOne(req, res) {
@@ -16,7 +16,7 @@ class HallsController {
             placeCount: req.body.placeCount
         };
 
-        res.send(await hallsService.CreateOne(hall));
+        res.send(await hallService.CreateOne(hall));
     }
 
     async EditById(req, res) {
@@ -26,13 +26,13 @@ class HallsController {
             placeCount: req.body.placeCount
         };
 
-        res.send(await hallsService.EditById(req.params.id, hall));
+        res.send(await hallService.EditById(req.params.id, hall));
     }
 
     async DeleteById(req, res) {
-        await hallsService.DeleteById(req.params.id);
+        await hallService.DeleteById(req.params.id);
         res.send('Ok');
     }
 }
 
-module.exports = new HallsController();
+module.exports = new HallController();

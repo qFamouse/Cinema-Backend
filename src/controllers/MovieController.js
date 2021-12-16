@@ -1,12 +1,12 @@
-const moviesService = require('../services/MoviesService');
+const movieService = require('../services/MovieService');
 
-class MoviesController {
+class MovieController {
     async GetAll(req, res) {
-        res.send(await moviesService.GetAll());
+        res.send(await movieService.GetAll());
     }
 
     async GetDetailedById(req, res) {
-        res.send(await moviesService.GetDetailedById(req.params.id))
+        res.send(await movieService.GetDetailedById(req.params.id))
     }
 
     async CreateOne(req, res) {
@@ -25,7 +25,7 @@ class MoviesController {
             endRentalDate: req.body.endRentalDate
         };
 
-        res.send(await moviesService.CreateOne(movie));
+        res.send(await movieService.CreateOne(movie));
     }
 
     async EditById(req, res) {
@@ -44,13 +44,13 @@ class MoviesController {
             endRentalDate: req.body.endRentalDate
         };
 
-        res.send(await moviesService.EditById(req.params.id, movie));
+        res.send(await movieService.EditById(req.params.id, movie));
     }
 
     async DeleteById(req, res) {
-        await moviesService.DeleteById(req.params.id);
+        await movieService.DeleteById(req.params.id);
         res.send('Ok');
     }
 }
 
-module.exports = new MoviesController();
+module.exports = new MovieController();

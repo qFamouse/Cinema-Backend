@@ -1,6 +1,6 @@
 const reviewsRepository = require('../repositories/ReviewsRepository');
 
-class ReviewsService {
+class ReviewService {
     async GetAll() {
         return await reviewsRepository.GetAll();
     }
@@ -22,4 +22,4 @@ class ReviewsService {
     }
 }
 
-module.exports = new ReviewsService();
+module.exports = new ReviewService();

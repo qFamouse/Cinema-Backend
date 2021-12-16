@@ -1,12 +1,12 @@
-const ticketsService = require('../services/TicketsService');
+const ticketService = require('../services/TicketService');
 
-class TicketsController {
+class TicketController {
     async GetAll(req, res) {
-        res.send(await ticketsService.GetAll());
+        res.send(await ticketService.GetAll());
     }
 
     async GetDetailedById(req, res) {
-        res.send(await ticketsService.GetDetailedById(req.params.id))
+        res.send(await ticketService.GetDetailedById(req.params.id))
     }
 
     async CreateOne(req, res) {
@@ -15,7 +15,7 @@ class TicketsController {
             placeId: req.body.placeId
         };
 
-        res.send(await ticketsService.CreateOne(ticket));
+        res.send(await ticketService.CreateOne(ticket));
     }
 
     async EditById(req, res) {
@@ -24,13 +24,13 @@ class TicketsController {
             placeId: req.body.placeId
         };
 
-        res.send(await ticketsService.EditById(req.params.id, ticket));
+        res.send(await ticketService.EditById(req.params.id, ticket));
     }
 
     async DeleteById(req, res) {
-        await ticketsService.DeleteById(req.params.id);
+        await ticketService.DeleteById(req.params.id);
         res.send('Ok');
     }
 }
 
-module.exports = new TicketsController();
+module.exports = new TicketController();

@@ -1,6 +1,6 @@
 const hallRepository = require('../repositories/HallRepository');
 
-class HallsService {
+class HallService {
     async GetAll() {
         return await hallRepository.GetAll();
     }
@@ -22,4 +22,4 @@ class HallsService {
     }
 }
 
-module.exports = new HallsService();
+module.exports = new HallService();

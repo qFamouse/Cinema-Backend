@@ -1,6 +1,6 @@
 const ticketRepository = require('../repositories/TicketRepository');
 
-class TicketsService {
+class TicketService {
     async GetAll() {
         return await ticketRepository.GetAll();
     }
@@ -22,4 +22,4 @@ class TicketsService {
     }
 }
 
-module.exports = new TicketsService();
+module.exports = new TicketService();

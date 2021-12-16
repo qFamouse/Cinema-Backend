@@ -1,12 +1,12 @@
-const placesService = require('../services/PlacesService');
+const placeService = require('../services/PlaceService');
 
-class PlacesController {
+class PlaceController {
     async GetAll(req, res) {
-        res.send(await placesService.GetAll());
+        res.send(await placeService.GetAll());
     }
 
     async GetDetailedById(req, res) {
-        res.send(await placesService.GetDetailedById(req.params.id))
+        res.send(await placeService.GetDetailedById(req.params.id))
     }
 
     async CreateOne(req, res) {
@@ -18,7 +18,7 @@ class PlacesController {
             isVip: req.body.isVip
         };
 
-        res.send(await placesService.CreateOne(place));
+        res.send(await placeService.CreateOne(place));
     }
 
     async EditById(req, res) {
@@ -30,13 +30,13 @@ class PlacesController {
             isVip: req.body.isVip
         };
 
-        res.send(await placesService.EditById(req.params.id, place));
+        res.send(await placeService.EditById(req.params.id, place));
     }
 
     async DeleteById(req, res) {
-        await placesService.DeleteById(req.params.id);
+        await placeService.DeleteById(req.params.id);
         res.send('Ok');
     }
 }
 
-module.exports = new PlacesController();
+module.exports = new PlaceController();

@@ -1,6 +1,6 @@
 const countryRepository = require('../repositories/CountryRepository');
 
-class CountriesService {
+class CountryService {
     async GetAll() {
         return await countryRepository.GetAll();
     }
@@ -21,4 +21,4 @@ class CountriesService {
     }
 }
 
-module.exports = new CountriesService();
+module.exports = new CountryService();
