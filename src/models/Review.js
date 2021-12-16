@@ -34,6 +34,15 @@ const Review = sequelize.define('review', {
         unique: false,
         field: 'review'
     }
+});
+
+Review.addHook('beforeCreate', (user, options) => {
+    user.createdAt = Date.now();
+    user.updatedAt = Date.now();
+});
+
+Review.addHook('beforeUpdate', (user, options) => {
+    user.updatedAt = Date.now();
 })
 
 module.exports = Review;

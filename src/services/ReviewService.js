@@ -10,7 +10,7 @@ class ReviewService {
     }
 
     async CreateOne(review) {
-        return await reviewsRepository.CreateOne(review);
+        return await reviewsRepository.Create(review);
     }
 
     async EditById(reviewId, review) {

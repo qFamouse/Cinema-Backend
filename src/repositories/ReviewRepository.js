@@ -16,25 +16,12 @@ class ReviewRepository {
         });
     }
 
-    async CreateOne(review) {
-        return await sequelize.models.review.create({
-            movieId: review.movieId,
-            userId: review.userId,
-            rating: review.rating,
-            review: review.review,
-            createdAt: Date.now(),
-            updatedAt: Date.now()
-        });
+    async Create(review) {
+        return sequelize.models.review.create(review);
     }
 
     async EditById(reviewId, review) {
-        await sequelize.models.review.update({
-            movieId: review.movieId,
-            userId: review.userId,
-            rating: review.rating,
-            review: review.review,
-            updatedAt: Date.now()
-        }, {
+        await sequelize.models.review.update(review, {
             where: {
                 id: reviewId
             }
