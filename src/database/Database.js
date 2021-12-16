@@ -1,5 +1,5 @@
 // Connect to database
-const sequelize = require('../config/database');
+const sequelize = require('../config/DatabaseConfig');
 
 // Loading Models //
 const user       = require('../models/User');
@@ -66,5 +66,9 @@ ticket.hasMany(booking);
 sequelize.sync().then(result => {
     //console.log(result);
 }).catch(err => console.log(err));
+
+sequelize.authenticate()
+    .then(() => console.log('Successful connection to the database'))
+    .catch(e => console.log('Failed connection to the database. Exception: ' + e));
 
 module.exports = sequelize;

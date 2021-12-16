@@ -1,4 +1,4 @@
-const sequelize = require('../database/database');
+const sequelize = require('../database/Database');
 const Genre = require('../models/Genre');
 const Country = require('../models/Countries');
 

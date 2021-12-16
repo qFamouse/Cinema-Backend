@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const sequelize = require('../config/database');
+const sequelize = require('../config/DatabaseConfig');
 
 const Review = sequelize.define('review', {
     id: {
