@@ -24,7 +24,7 @@ class UserController {
             phone: req.body.phone ?? null
         };
 
-        res.send(await userService.CreateOne(user, userInfo))
+        res.send(await userService.Create(user, userInfo))
     }
 
     async EditById(req, res) {

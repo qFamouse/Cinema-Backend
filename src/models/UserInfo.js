@@ -68,4 +68,14 @@ const UserInfo = sequelize.define('user_info',
 }
 );
 
+UserInfo.addHook('beforeCreate', (user, options) => {
+    user.registerAt = Date.now();
+    user.lastVisitAt = Date.now();
+    user.updateAt = Date.now();
+});
+
+UserInfo.addHook('beforeUpdate', (user, options) => {
+    user.updateAt = Date.now();
+})
+
 module.exports = UserInfo;

@@ -1,4 +1,5 @@
 const userRepository = require('../repositories/UserRepository');
+const roleRepository = require('../repositories/RoleRepository');
 const crypt = require("../utils/Crypt");
 
 class UserService {
@@ -9,11 +10,17 @@ class UserService {
         return await userRepository.GetById(userId);
     }
 
-    async CreateOne(user, userInfo) {
+    async Create(user, userInfo) {
+        // Check to exist role
+        let role = await roleRepository.GetById(user.roleId);
+
+        if (role === null) {
+            throw "Role not found"
+        }
         // Hashing the password
         user.password = await crypt.CryptPassword(user.password);
 
-        return await userRepository.CreateOne(user, userInfo);
+        return await userRepository.Create(user, role, userInfo);
     }
 
     async EditById(userId, user, userInfo) {
