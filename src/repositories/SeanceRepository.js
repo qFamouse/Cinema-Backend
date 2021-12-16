@@ -3,7 +3,7 @@ const sequelize = require('../database/database');
 const Movie = require('../models/Movie');
 const Hall = require('../models/Hall');
 
-class SeancesRepository {
+class SeanceRepository {
     async GetAll() {
         return await sequelize.models.seance.findAll();
     }
@@ -51,4 +51,4 @@ class SeancesRepository {
     }
 }
 
-module.exports = new SeancesRepository();
+module.exports = new SeanceRepository();

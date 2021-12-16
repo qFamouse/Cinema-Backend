@@ -1,4 +1,4 @@
-const seanceRepository = require('../repositories/SeancesRepository');
+const seanceRepository = require('../repositories/SeanceRepository');
 
 class SeanceService {
     async GetAll() {
