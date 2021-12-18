@@ -8,5 +8,6 @@
     <orderEntry type="library" name="@types/sequelize" level="application" />
     <orderEntry type="library" name="@types/sequelize-cursor-pagination" level="application" />
     <orderEntry type="library" name="@types/sequelize-fixtures" level="application" />
+    <orderEntry type="library" name="@types/passport" level="application" />
   </component>
 </module>
