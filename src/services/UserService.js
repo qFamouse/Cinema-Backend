@@ -1,6 +1,9 @@
 const userRepository = require('../repositories/UserRepository');
 const roleRepository = require('../repositories/RoleRepository');
 const crypt = require("../utils/Crypt");
+const UserConfig = require('../config/ModelsConfig.json');
+const AuthConfig = require('../config/AuthConfig.json');
+const jwt = require('jwt-simple');
 
 class UserService {
     async GetAll() {
@@ -12,7 +15,7 @@ class UserService {
 
     async Create(user, userInfo) {
         // Check to exist role
-        let role = await roleRepository.GetById(user.roleId);
+        let role = await roleRepository.GetById(UserConfig.Users.DefaultRole);
 
         if (role === null) {
             throw "Role not found"
@@ -33,6 +36,27 @@ class UserService {
 
     async DeleteById(userId) {
         await userRepository.DeleteById(userId);
+    }
+
+    async Login(user) {
+        const password = user.password;
+        user = await userRepository.GetOneByQuery({login: user.login});
+
+        if (!user) {
+            throw 'No such user'
+        }
+
+        if (!crypt.ComparePassword(password, user.password)) {
+            throw 'Bad password'
+        }
+
+        let payload = {
+            userId: user.id,
+        }
+
+        let token = jwt.encode(payload, AuthConfig.SecretKey);
+
+        return {token: token};
     }
 }
 

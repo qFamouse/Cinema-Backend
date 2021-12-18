@@ -1,4 +1,6 @@
 const sequelize = require('../database/Database');
+const UserInfo = require("../models/UserInfo");
+const Op = require('sequelize').Op;
 
 class UserRepository {
     async GetAll() {
@@ -14,6 +16,33 @@ class UserRepository {
         let userInfo = await user.getUserInfo();
 
         return {...user.get(), ...userInfo.get()};
+    }
+
+    // Get Only ONE user with the specified fields
+    // Send object with fields: {login: user.login, id: 10}
+    async GetOneByQuery(query) {
+        console.log(query)
+        return await sequelize.models.user.findOne({
+            include: [{
+                model: UserInfo,
+                as: 'UserInfo'
+            }],
+            where: query
+        })
+    }
+
+    // Get Many users with the specified fields
+    // Send array with object fields: [{id: 10}, {login: 'ds11d1s111d'}, {login: 'MrTester610'}]
+    async GetAllByQuery(query) {
+        return await sequelize.models.user.findAll({
+            include: [{
+                model: UserInfo,
+                as: 'UserInfo'
+            }],
+            where: {
+                [Op.or]: query
+            }
+        })
     }
 
     async Create(user, role, userInfo) {
