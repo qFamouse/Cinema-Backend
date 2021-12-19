@@ -7,7 +7,7 @@ class RoleController {
     async GetById(req, res) {
         res.send(await roleService.GetById(req.params.id));
     }
-    async CreateOne(req, res) {
+    async Create(req, res) {
         let role = {
             name: req.body.name
         };
