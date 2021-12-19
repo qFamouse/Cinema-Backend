@@ -1,6 +1,6 @@
 const Joi = require('joi');
 
-const ReviewScheme = {
+const GenreScheme = {
     create: Joi.object().keys(
         {
             name: Joi.string()
@@ -17,4 +17,4 @@ const ReviewScheme = {
     )
 };
 
-module.exports = ReviewScheme;
+module.exports = GenreScheme;
