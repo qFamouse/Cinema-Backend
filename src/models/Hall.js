@@ -24,7 +24,7 @@ const Hall = sequelize.define('hall', {
     },
     placeCount: {
         type: Sequelize.INTEGER,
-        allowNull: false,
+        allowNull: true,
         unique: false,
         field: 'place_count'
     }
