@@ -7,7 +7,7 @@ class CountryController {
     async GetById(req, res) {
         res.send(await countryService.GetById(req.params.id));
     }
-    async CreateOne(req, res) {
+    async Create(req, res) {
         let country = {
             name: req.body.name
         };
