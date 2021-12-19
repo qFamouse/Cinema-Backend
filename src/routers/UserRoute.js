@@ -8,12 +8,14 @@ const userScheme = require('../schemes/UserScheme');
 
 const userController = require('../controllers/UserController');
 
-router.get('/', isAuthorize,  userController.GetAll);
+
 router.get('/login', userController.Login);
+router.post('/register', userController.Register);
+router.use(isAuthorize);
+router.get('/', userController.GetAll);
 router.get('/:id', userController.GetById);
 router.post('/', validate(userScheme.create), userController.CreateOne);
 router.patch('/:id', validate(userScheme.edit), userController.EditById);
 router.delete('/:id', userController.DeleteById);
-router.post('/register', userController.Register);
 
-module.exports= router;
+module.exports = router;
