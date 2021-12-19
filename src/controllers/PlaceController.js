@@ -9,7 +9,7 @@ class PlaceController {
         res.send(await placeService.GetDetailedById(req.params.id))
     }
 
-    async CreateOne(req, res) {
+    async Create(req, res) {
         let place = {
             hallId: req.body.hallId,
             floor: req.body.floor,
