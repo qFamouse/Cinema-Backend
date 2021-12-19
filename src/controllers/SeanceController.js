@@ -9,7 +9,7 @@ class SeanceController {
         res.send(await seanceService.GetDetailedById(req.params.id))
     }
 
-    async CreateOne(req, res) {
+    async Create(req, res) {
         let seance = {
             hallId: req.body.hallId,
             movieId: req.body.movieId,
