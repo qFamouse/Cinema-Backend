@@ -11,7 +11,7 @@ const reviewController = require('../controllers/ReviewController');
 router.use(isAuthorize);
 router.get('/', reviewController.GetAll);
 router.get('/:id', reviewController.GetDetailedById);
-router.post('/', validate(reviewScheme.create), reviewController.CreateOne);
+router.post('/', validate(reviewScheme.create), reviewController.Create);
 router.patch('/:id', validate(reviewScheme.edit), reviewController.EditById);
 router.delete('/:id', reviewController.DeleteById);
 

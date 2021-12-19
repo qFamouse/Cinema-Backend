@@ -9,7 +9,7 @@ class ReviewController {
         res.send(await reviewService.GetDetailedById(req.params.id))
     }
 
-    async CreateOne(req, res) {
+    async Create(req, res) {
         let review = {
             movieId: req.body.movieId,
             userId: req.body.userId,
