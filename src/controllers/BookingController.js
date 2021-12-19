@@ -9,7 +9,7 @@ class BookingController {
         res.send(await bookingService.GetDetailedById(req.params.id))
     }
 
-    async CreateOne(req, res) {
+    async Create(req, res) {
         let booking = {
             userId: req.body.userId,
             ticketId: req.body.ticketId
