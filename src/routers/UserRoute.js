@@ -10,7 +10,7 @@ const userController = require('../controllers/UserController');
 
 
 router.get('/login', userController.Login);
-router.post('/register', userController.Register);
+router.post('/register', validate(userScheme.create), userController.Register);
 router.use(isAuthorize);
 router.get('/', userController.GetAll);
 router.get('/:id', userController.GetById);
