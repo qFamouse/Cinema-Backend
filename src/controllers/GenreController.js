@@ -7,7 +7,7 @@ class GenreController {
     async GetById(req, res) {
         res.send(await genreService.GetById(req.params.id));
     }
-    async CreateOne(req, res) {
+    async Create(req, res) {
         let genre = {
             name: req.body.name
         };
