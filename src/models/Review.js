@@ -30,7 +30,7 @@ const Review = sequelize.define('review', {
     },
     review: {
         type: Sequelize.STRING,
-        allowNull: false,
+        allowNull: true,
         unique: false,
         field: 'review'
     }
