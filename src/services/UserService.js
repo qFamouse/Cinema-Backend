@@ -46,7 +46,7 @@ class UserService {
             throw 'No such user'
         }
 
-        if (!crypt.ComparePassword(password, user.password)) {
+        if (!crypt.ValidatePassword(password, user.password)) {
             throw 'Bad password'
         }
 

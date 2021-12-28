@@ -5,6 +5,6 @@ exports.CryptPassword = async function(password) {
     return await bcrypt.hashSync(password, salt);
 }
 
-exports.ComparePassword = function(plainPass, hashPass) {
+exports.ValidatePassword = function(plainPass, hashPass) {
     return  bcrypt.compareSync(plainPass, hashPass);
 };
