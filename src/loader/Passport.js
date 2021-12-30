@@ -11,7 +11,7 @@ let options = {
 
 passport.use(new JWTStrategy(options, function(jwt_payload, done) {
 
-        userService.GetById(jwt_payload.userId)
+        userService.GetDetailById(jwt_payload.userId)
             .then( (user) => {
                 if(!user)
                     return done(null, false);

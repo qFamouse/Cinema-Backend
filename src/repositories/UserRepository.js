@@ -2,33 +2,33 @@ const sequelize = require('../database/Database');
 const UserInfo = require("../models/UserInfo");
 const Op = require('sequelize').Op;
 
+
 class UserRepository {
     async GetAll() {
         return await sequelize.models.user.findAll();
     }
 
     async GetById(userId) {
-        let user = await sequelize.models.user.findOne({
+        return await sequelize.models.user.findOne({
             where: {
                 id: userId
             }
         })
-        let userInfo = await user.getUserInfo();
+        // let userInfo = await user.getUserInfo();
+        // return {...user.get(), ...userInfo.get()};
+    }
 
-        return {...user.get(), ...userInfo.get()};
+    async GetDetailById(userId) {
+        return await sequelize.models.user.findOne({
+            include: { model: UserInfo, as: 'UserInfo' },
+            where: { id: userId }
+        })
     }
 
     // Get Only ONE user with the specified fields
     // Send object with fields: {login: user.login, id: 10}
     async GetOneByQuery(query) {
-        console.log(query)
-        return await sequelize.models.user.findOne({
-            include: [{
-                model: UserInfo,
-                as: 'UserInfo'
-            }],
-            where: query
-        })
+        return await sequelize.models.user.findOne({ where: query })
     }
 
     // Get Many users with the specified fields
@@ -46,28 +46,24 @@ class UserRepository {
     }
 
     async Create(user, role, userInfo) {
-        user = await sequelize.models.user.create(user);
-        userInfo = await user.createUserInfo(userInfo);
+        return await sequelize.transaction(
+            async (t) => {
+                user = await sequelize.models.user.create(user, { transaction: t });
+                userInfo = await user.createUserInfo(userInfo, { transaction: t });
+                await user.addRole(role, {transaction: t});
 
-        await user.addRole(role);
-        userInfo['userId'] = undefined; // We already have id in 'user'
-        return {...user.get(), ...userInfo.get()};
+                userInfo['userId'] = undefined; // We already have id in 'user'
+                return {...user.get(), ...userInfo.get()};
+            }
+        )
     }
 
-    async EditById(userId, user, userInfo) {
-        await sequelize.models.user.update(user, {
+    async EditById(userId, user) {
+        return await sequelize.models.user.update(user, {
             where: {
                 id: userId
             }
         });
-
-        await sequelize.models.user_info.update(userInfo, {
-            where: {
-                userId: userId
-            }
-        });
-
-        return await this.GetById(userId);
     }
 
     async DeleteById(userId) {

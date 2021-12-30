@@ -7,24 +7,7 @@ class UserController {
         res.send(await userService.GetAll());
     }
     async GetById(req, res) {
-        res.send(await userService.GetById(req.params.id))
-    }
-    async CreateOne(req, res) {
-        let user = {
-            login: req.body.login,
-            password: req.body.password,
-            roleId: req.body.roleId ?? UserConfig.Users.DefaultRole
-        };
-
-        let userInfo = {
-            avatar: req.body.avatar ?? null,
-            firstName: req.body.firstName,
-            birthday: req.body.birthday,
-            email: req.body.email,
-            phone: req.body.phone ?? null
-        };
-
-        res.send(await userService.Create(user, userInfo))
+        res.send(await userService.GetDetailById(req.params.id))
     }
 
     async EditById(req, res) {
@@ -65,7 +48,7 @@ class UserController {
             phone: req.body.phone ?? null
         };
 
-        res.send(await userService.Create(user, userInfo))
+        res.send(await userService.Register(user, userInfo))
     }
 
     async Login(req, res) {
