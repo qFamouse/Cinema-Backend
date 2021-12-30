@@ -2,12 +2,11 @@ const express = require('express');
 const router = express.Router();
 
 const validate = require('../middleware/Validate');
-const isAuthorize = require('../middleware/IsAuthorize');
-
 const userScheme = require('../schemes/UserScheme');
 
-const userController = require('../controllers/UserController');
+const isAuthorize = require('../middleware/IsAuthorize');
 
+const userController = require('../controllers/UserController');
 
 router.get('/login', userController.Login);
 router.post('/register', validate(userScheme.create), userController.Register);
