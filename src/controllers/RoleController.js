@@ -1,4 +1,5 @@
 const roleService = require('../services/RoleService');
+const Response = require('../utils/Response');
 
 class RoleController {
     async GetAll(req, res) {
@@ -25,7 +26,7 @@ class RoleController {
 
     async DeleteById(req, res) {
         await roleService.DeleteById(req.params.id);
-        res.send('Ok');
+        res.json(new Response('Ok', 200));
     }
 }
 
