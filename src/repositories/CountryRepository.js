@@ -1,12 +1,12 @@
-const sequelize = require('../database/Database');
+const Countries = require('../models/Countries');
 
 class CountryRepository {
     async GetAll() {
-        return await sequelize.models.countries.findAll();
+        return await Countries.findAll();
     }
 
     async GetById(countryId) {
-        return await sequelize.models.countries.findOne({
+        return await Countries.findOne({
             where: {
                 id: countryId
             }
@@ -14,11 +14,11 @@ class CountryRepository {
     }
 
     async Create(country) {
-        return sequelize.models.countries.create(country)
+        return Countries.create(country)
     }
 
     async EditById(countryId, country) {
-        await sequelize.models.countries.update(country, {
+        await Countries.update(country, {
             where: {
                 id: countryId
             }
@@ -29,7 +29,7 @@ class CountryRepository {
     }
 
     async DeleteById(countryId) {
-        await sequelize.models.role.destroy({
+        await Countries.destroy({
             where: {
                 id: countryId
             }

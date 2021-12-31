@@ -1,14 +1,14 @@
-const sequelize = require('../database/Database');
 const Genre = require('../models/Genre');
 const Country = require('../models/Countries');
+const Movie = require('../models/Movie');
 
 class MovieRepository {
     async GetAll() {
-        return await sequelize.models.movie.findAll();
+        return await Movie.findAll();
     }
 
     async GetDetailedById(movieId) {
-        return await sequelize.models.movie.findOne({
+        return await Movie.findOne({
             include: [Genre, Country],
             where: {
                 id: movieId
@@ -17,11 +17,11 @@ class MovieRepository {
     }
 
     async Create(movie) {
-        return sequelize.models.movie.create(movie);
+        return Movie.create(movie);
     }
 
     async EditById(movieId, movie) {
-        await sequelize.models.movie.update(movie, {
+        await Movie.update(movie, {
             where: {
                 id: movieId
             }
@@ -31,7 +31,7 @@ class MovieRepository {
     }
 
     async DeleteById(movieId) {
-        await sequelize.models.movie.destroy({
+        await Movie.destroy({
             where: {
                 id: movieId
             }

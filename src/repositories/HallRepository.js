@@ -1,12 +1,13 @@
-const sequelize = require('../database/Database');
+const sequelize = require('sequelize');
+const Hall = require('../models/Hall');
 
 class HallRepository {
     async GetAll() {
-        return await sequelize.models.hall.findAll();
+        return await Hall.findAll();
     }
 
     async GetById(hallId) {
-        return await sequelize.models.hall.findOne({
+        return await Hall.findOne({
             where: {
                 id: hallId
             }
@@ -14,11 +15,11 @@ class HallRepository {
     }
 
     async Create(hall) {
-        return sequelize.models.hall.create(hall)
+        return Hall.create(hall)
     }
 
     async EditById(hallId, hall) {
-        await sequelize.models.hall.update(hall, {
+        await Hall.update(hall, {
             where: {
                 id: hallId
             }
@@ -36,14 +37,14 @@ class HallRepository {
     }
 
     async IncreaseSeatById(hallId, inc = 1) {
-        await sequelize.models.hall.update(
+        await Hall.update(
             { placeCount: sequelize.literal(`place_count + ${inc}`) },
             { where: { id: hallId }}
         );
     }
 
     async DecreaseSeatById(hallId, dec = 1) {
-        await sequelize.models.hall.update(
+        await Hall.update(
             { placeCount: sequelize.literal(`place_count - ${dec}`) },
             { where: { id: hallId }}
         );

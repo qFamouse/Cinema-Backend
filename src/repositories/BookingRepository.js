@@ -1,15 +1,15 @@
-const sequelize = require('../database/Database');
 const User = require('../models/User');
 const Ticket = require('../models/Ticket');
+const Booking = require('../models/Booking');
 
 
 class BookingRepository {
     async GetAll() {
-        return await sequelize.models.booking.findAll();
+        return await Booking.findAll();
     }
 
     async GetDetailedById(bookingId) {
-        return await sequelize.models.booking.findOne({
+        return await Booking.findOne({
             include: [User, Ticket],
             where: {
                 id: bookingId
@@ -18,11 +18,11 @@ class BookingRepository {
     }
 
     async Create(booking) {
-        return sequelize.models.booking.create(booking);
+        return Booking.create(booking);
     }
 
     async EditById(bookingId, booking) {
-        await sequelize.models.booking.update(booking, {
+        await Booking.update(booking, {
             where: {
                 id: bookingId
             }
@@ -32,7 +32,7 @@ class BookingRepository {
     }
 
     async DeleteById(bookingId) {
-        await sequelize.models.booking.destroy({
+        await Booking.destroy({
             where: {
                 id: bookingId
             }

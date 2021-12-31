@@ -1,12 +1,12 @@
-const sequelize = require('../database/Database');
+const Genre = require('../models/Genre');
 
 class GenreRepository {
     async GetAll() {
-        return await sequelize.models.genre.findAll();
+        return await Genre.findAll();
     }
 
     async GetById(genreId) {
-        return await sequelize.models.genre.findOne({
+        return await Genre.findOne({
             where: {
                 id: genreId
             }
@@ -14,11 +14,11 @@ class GenreRepository {
     }
 
     async Create(genre) {
-        return sequelize.models.genre.create(genre)
+        return Genre.create(genre)
     }
 
     async EditById(genreId, genre) {
-        await sequelize.models.genre.update(genre, {
+        await Genre.update(genre, {
             where: {
                 id: genreId
             }
@@ -29,7 +29,7 @@ class GenreRepository {
     }
 
     async DeleteById(genreId) {
-        await sequelize.models.genre.destroy({
+        await Genre.destroy({
             where: {
                 id: genreId
             }

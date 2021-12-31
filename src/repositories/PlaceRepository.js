@@ -1,19 +1,19 @@
-const sequelize = require('../database/Database');
 const Hall = require("../models/Hall");
+const Place = require('../models/Place');
 
 class PlaceRepository {
     async GetAll() {
-        return await sequelize.models.place.findAll();
+        return await Place.findAll();
     }
 
     async GetById(placeId) {
-        return await sequelize.models.place.findOne({
+        return await Place.findOne({
             where: { id: placeId }
         });
     }
 
     async GetDetailedById(placeId) {
-        return await sequelize.models.place.findOne({
+        return await Place.findOne({
             include: [Hall],
             where: {
                 id: placeId
@@ -22,11 +22,11 @@ class PlaceRepository {
     }
 
     async Create(place) {
-        return sequelize.models.place.create(place);
+        return Place.create(place);
     }
 
     async EditById(placeId, place) {
-        await sequelize.models.place.update(place, {
+        await Place.update(place, {
             where: {
                 id: placeId
             }
@@ -36,7 +36,7 @@ class PlaceRepository {
     }
 
     async DeleteById(placeId) {
-        await sequelize.models.place.destroy({
+        await Place.destroy({
             where: {
                 id: placeId
             }

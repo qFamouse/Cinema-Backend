@@ -1,12 +1,12 @@
-const sequelize = require('../database/Database');
+const Role = require('../models/Role');
 
 class RoleRepository {
     async GetAll() {
-        return await sequelize.models.role.findAll();
+        return await Role.findAll();
     }
 
     async GetById(roleId) {
-        return await sequelize.models.role.findOne({
+        return await Role.findOne({
             where: {
                 id: roleId
             }
@@ -14,11 +14,11 @@ class RoleRepository {
     }
 
     async Create(role) {
-        return sequelize.models.role.create(role)
+        return Role.create(role)
     }
 
     async EditById(roleId, role) {
-        await sequelize.models.role.update(role, {
+        await Role.update(role, {
             where: {
                 id: roleId
             }
@@ -29,7 +29,7 @@ class RoleRepository {
     }
 
     async DeleteById(roleId) {
-        await sequelize.models.role.destroy({
+        await Role.destroy({
             where: {
                 id: roleId
             }

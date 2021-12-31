@@ -1,14 +1,14 @@
-const sequelize = require('../database/Database');
 const Seance = require('../models/Seance');
 const Place = require('../models/Place');
+const Ticket = require('../models/Ticket');
 
 class TicketRepository {
     async GetAll() {
-        return await sequelize.models.ticket.findAll();
+        return await Ticket.findAll();
     }
 
     async GetDetailedById(ticketId) {
-        return await sequelize.models.ticket.findOne({
+        return await Ticket.findOne({
             include: [Seance, Place],
             where: {
                 id: ticketId
@@ -17,11 +17,11 @@ class TicketRepository {
     }
 
     async Create(ticket) {
-        return sequelize.models.ticket.create(ticket); // await redundant because is async method and create also async method
+        return Ticket.create(ticket); // await redundant because is async method and create also async method
     }
 
     async EditById(ticketId, ticket) {
-        await sequelize.models.ticket.update(ticket, {
+        await Ticket.update(ticket, {
             where: {
                 id: ticketId
             }
@@ -31,7 +31,7 @@ class TicketRepository {
     }
 
     async DeleteById(ticketId) {
-        await sequelize.models.ticket.destroy({
+        await Ticket.destroy({
             where: {
                 id: ticketId
             }

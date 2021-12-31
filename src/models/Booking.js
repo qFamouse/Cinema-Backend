@@ -19,7 +19,7 @@ const Booking = sequelize.define('booking', {
     ticketId: {
         type: Sequelize.INTEGER.UNSIGNED,
         allowNull: false,
-        unique: false,
+        unique: true,
         field: 'ticket_id'
     }
 },
