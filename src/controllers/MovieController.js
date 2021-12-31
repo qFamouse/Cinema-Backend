@@ -25,7 +25,7 @@ class MovieController {
             endRentalDate: req.body.endRentalDate
         };
 
-        res.send(await movieService.CreateOne(movie));
+        res.send(await movieService.Create(movie));
     }
 
     async EditById(req, res) {
