@@ -34,6 +34,20 @@ class HallRepository {
             }
         });
     }
+
+    async IncreaseSeatById(hallId, inc = 1) {
+        await sequelize.models.hall.update(
+            { placeCount: sequelize.literal(`place_count + ${inc}`) },
+            { where: { id: hallId }}
+        );
+    }
+
+    async DecreaseSeatById(hallId, dec = 1) {
+        await sequelize.models.hall.update(
+            { placeCount: sequelize.literal(`place_count - ${dec}`) },
+            { where: { id: hallId }}
+        );
+    }
 }
 
 module.exports = new HallRepository();

@@ -6,6 +6,12 @@ class PlaceRepository {
         return await sequelize.models.place.findAll();
     }
 
+    async GetById(placeId) {
+        return await sequelize.models.place.findOne({
+            where: { id: placeId }
+        });
+    }
+
     async GetDetailedById(placeId) {
         return await sequelize.models.place.findOne({
             include: [Hall],
