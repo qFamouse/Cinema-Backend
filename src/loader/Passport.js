@@ -9,19 +9,17 @@ let options = {
     secretOrKey : AuthConfig.SecretKey
 }
 
-passport.use(new JWTStrategy(options, function(jwt_payload, done) {
-
-        userService.GetDetailById(jwt_payload.userId)
-            .then( (user) => {
-                if(!user)
-                    return done(null, false);
-
-                return done(null, user);
-            })
-            .catch( (error) => {
-                return done(error, false);
-            });
-    })
-);
+passport.use(new JWTStrategy(options, async function(jwt_payload, done) {
+    try {
+        const user = await userService.GetDetailById(jwt_payload.userId);
+        if (!user) {
+            return done(null, false);
+        }
+        return done(null, user);
+    }
+    catch (error) {
+        return done(error, false);
+    }
+}));
 
 module.exports = passport;
