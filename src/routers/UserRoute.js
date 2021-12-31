@@ -10,7 +10,7 @@ const userController = require('../controllers/UserController');
 
 router.get('/login', userController.Login);
 router.post('/', validate(userScheme.create), userController.Register);
-// router.use(isAuthorize);
+router.use(isAuthorize);
 router.get('/', userController.GetAll);
 router.get('/:id', userController.GetById);
 router.patch('/:id', validate(userScheme.edit), userController.EditById);
