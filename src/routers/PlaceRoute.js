@@ -9,10 +9,30 @@ const isAuthorize = require('../middleware/IsAuthorize');
 const placeController = require('../controllers/PlaceController');
 
 router.use(isAuthorize);
-router.get('/', placeController.GetAll);
-router.get('/:id', placeController.GetDetailedById);
-router.post('/', validate(placeScheme.create), placeController.Create);
-router.patch('/:id', validate(placeScheme.edit), placeController.EditById);
-router.delete('/:id', placeController.DeleteById);
+router.get('/', placeController.GetAll
+    /*
+    #swagger.tags = ['Places']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
+router.get('/:id', placeController.GetDetailedById
+    /*
+    #swagger.tags = ['Places']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
+router.post('/', validate(placeScheme.create), placeController.Create
+    /*
+    #swagger.tags = ['Places']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
+router.patch('/:id', validate(placeScheme.edit), placeController.EditById
+    /*
+    #swagger.tags = ['Places']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
+router.delete('/:id', placeController.DeleteById
+    /*
+    #swagger.tags = ['Places']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
 
 module.exports = router;

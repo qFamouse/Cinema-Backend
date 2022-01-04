@@ -9,10 +9,30 @@ const isAuthorize = require('../middleware/IsAuthorize');
 const reviewController = require('../controllers/ReviewController');
 
 router.use(isAuthorize);
-router.get('/', reviewController.GetAll);
-router.get('/:id', reviewController.GetDetailedById);
-router.post('/', validate(reviewScheme.create), reviewController.Create);
-router.patch('/:id', validate(reviewScheme.edit), reviewController.EditById);
-router.delete('/:id', reviewController.DeleteById);
+router.get('/', reviewController.GetAll
+    /*
+    #swagger.tags = ['Reviews']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
+router.get('/:id', reviewController.GetDetailedById
+    /*
+    #swagger.tags = ['Reviews']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
+router.post('/', validate(reviewScheme.create), reviewController.Create
+    /*
+    #swagger.tags = ['Reviews']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
+router.patch('/:id', validate(reviewScheme.edit), reviewController.EditById
+    /*
+    #swagger.tags = ['Reviews']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
+router.delete('/:id', reviewController.DeleteById
+    /*
+    #swagger.tags = ['Reviews']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
 
 module.exports = router;

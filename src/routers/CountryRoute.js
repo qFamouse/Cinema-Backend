@@ -9,10 +9,30 @@ const isAuthorize = require('../middleware/IsAuthorize');
 const countryController = require('../controllers/CountryController');
 
 router.use(isAuthorize);
-router.get('/', countryController.GetAll);
-router.get('/:id', countryController.GetById);
-router.post('/', validate(countryScheme.create), countryController.Create);
-router.patch('/:id', validate(countryScheme.edit), countryController.EditById);
-router.delete('/:id', countryController.DeleteById);
+router.get('/', countryController.GetAll
+    /*
+    #swagger.tags = ['Countries']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
+router.get('/:id', countryController.GetById
+    /*
+    #swagger.tags = ['Countries']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
+router.post('/', validate(countryScheme.create), countryController.Create
+    /*
+    #swagger.tags = ['Countries']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
+router.patch('/:id', validate(countryScheme.edit), countryController.EditById
+    /*
+    #swagger.tags = ['Countries']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
+router.delete('/:id', countryController.DeleteById
+    /*
+    #swagger.tags = ['Countries']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
 
 module.exports= router;

@@ -9,10 +9,30 @@ const isAuthorize = require('../middleware/IsAuthorize');
 const hallController = require('../controllers/HallController');
 
 router.use(isAuthorize);
-router.get('/', hallController.GetAll);
-router.get('/:id', hallController.GetById);
-router.post('/', validate(hallScheme.create), hallController.CreateOne);
-router.patch('/:id', validate(hallScheme.edit), hallController.EditById);
-router.delete('/:id', hallController.DeleteById);
+router.get('/', hallController.GetAll
+    /*
+    #swagger.tags = ['Halls']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
+router.get('/:id', hallController.GetById
+    /*
+    #swagger.tags = ['Halls']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
+router.post('/', validate(hallScheme.create), hallController.CreateOne
+    /*
+    #swagger.tags = ['Halls']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
+router.patch('/:id', validate(hallScheme.edit), hallController.EditById
+    /*
+    #swagger.tags = ['Halls']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
+router.delete('/:id', hallController.DeleteById
+    /*
+    #swagger.tags = ['Halls']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
 
 module.exports = router;

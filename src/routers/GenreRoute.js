@@ -9,10 +9,30 @@ const isAuthorize = require('../middleware/IsAuthorize');
 const genreController = require('../controllers/GenreController');
 
 router.use(isAuthorize);
-router.get('/', genreController.GetAll);
-router.get('/:id', genreController.GetById);
-router.post('/', validate(genreScheme.create), genreController.Create);
-router.patch('/:id', validate(genreScheme.edit), genreController.EditById);
-router.delete('/:id', genreController.DeleteById);
+router.get('/', genreController.GetAll
+    /*
+    #swagger.tags = ['Genres']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
+router.get('/:id', genreController.GetById
+    /*
+    #swagger.tags = ['Genres']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
+router.post('/', validate(genreScheme.create), genreController.Create
+    /*
+    #swagger.tags = ['Genres']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
+router.patch('/:id', validate(genreScheme.edit), genreController.EditById
+    /*
+    #swagger.tags = ['Genres']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
+router.delete('/:id', genreController.DeleteById
+    /*
+    #swagger.tags = ['Genres']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
 
 module.exports= router;

@@ -8,12 +8,34 @@ const isAuthorize = require('../middleware/IsAuthorize');
 
 const userController = require('../controllers/UserController');
 
-router.get('/login', userController.Login);
-router.post('/', validate(userScheme.create), userController.Register);
+router.post('/login', userController.Login
+    /*
+    #swagger.tags = ['Users']
+    */);
+router.post('/register', validate(userScheme.create), userController.Register
+    /*
+    #swagger.tags = ['Users']
+    */);
 router.use(isAuthorize);
-router.get('/', userController.GetAll);
-router.get('/:id', userController.GetById);
-router.patch('/:id', validate(userScheme.edit), userController.EditById);
-router.delete('/:id', userController.DeleteById);
+router.get('/', userController.GetAll
+    /*
+    #swagger.tags = ['Users']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
+router.get('/:id', userController.GetById
+    /*
+    #swagger.tags = ['Users']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
+router.patch('/:id', validate(userScheme.edit), userController.EditById
+    /*
+    #swagger.tags = ['Users']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
+router.delete('/:id', userController.DeleteById
+    /*
+    #swagger.tags = ['Users']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
 
 module.exports = router;

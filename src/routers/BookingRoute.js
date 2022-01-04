@@ -9,10 +9,30 @@ const isAuthorize = require('../middleware/IsAuthorize');
 const bookingController = require('../controllers/BookingController');
 
 router.use(isAuthorize);
-router.get('/', bookingController.GetAll);
-router.get('/:id', bookingController.GetDetailedById);
-router.post('/', validate(bookingScheme.create), bookingController.Create);
-router.patch('/:id', validate(bookingScheme.edit), bookingController.EditById);
-router.delete('/:id', bookingController.DeleteById);
+router.get('/', bookingController.GetAll
+    /*
+    #swagger.tags = ['Booking']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
+router.get('/:id', bookingController.GetDetailedById
+    /*
+    #swagger.tags = ['Booking']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
+router.post('/', validate(bookingScheme.create), bookingController.Create
+    /*
+    #swagger.tags = ['Booking']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
+router.patch('/:id', validate(bookingScheme.edit), bookingController.EditById
+    /*
+    #swagger.tags = ['Booking']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
+router.delete('/:id', bookingController.DeleteById
+    /*
+    #swagger.tags = ['Booking']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
 
 module.exports = router;

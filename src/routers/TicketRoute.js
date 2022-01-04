@@ -9,10 +9,30 @@ const isAuthorize = require('../middleware/IsAuthorize');
 const ticketController = require('../controllers/TicketController');
 
 router.use(isAuthorize);
-router.get('/', ticketController.GetAll);
-router.get('/:id', ticketController.GetDetailedById);
-router.post('/', validate(ticketScheme.create), ticketController.Create);
-router.patch('/:id', validate(ticketScheme.edit), ticketController.EditById);
-router.delete('/:id', ticketController.DeleteById);
+router.get('/', ticketController.GetAll
+    /*
+    #swagger.tags = ['Tickets']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
+router.get('/:id', ticketController.GetDetailedById
+    /*
+    #swagger.tags = ['Tickets']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
+router.post('/', validate(ticketScheme.create), ticketController.Create
+    /*
+    #swagger.tags = ['Tickets']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
+router.patch('/:id', validate(ticketScheme.edit), ticketController.EditById
+    /*
+    #swagger.tags = ['Tickets']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
+router.delete('/:id', ticketController.DeleteById
+    /*
+    #swagger.tags = ['Tickets']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
 
 module.exports = router;
