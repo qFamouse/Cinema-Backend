@@ -1,4 +1,4 @@
-const HttpStatusCodeError = require("HttpStatusCodeError");
+const HttpStatusCodeError = require("./HttpStatusCodeError");
 
 class NotFoundError extends HttpStatusCodeError {
     constructor(message) {
