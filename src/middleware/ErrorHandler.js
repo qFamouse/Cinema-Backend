@@ -1,5 +1,5 @@
 const Response = require("../utils/Response");
-const HttpStatusCodeError = require("../Errors/HttpStatusCodeError");
+const HttpStatusCodeError = require("../errors/HttpStatusCodeError");
 const ValidationError = require('sequelize').ValidationError;
 
 module.exports = (error, req, res, next) => {

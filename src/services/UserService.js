@@ -8,9 +8,9 @@ const jwt = require('jwt-simple');
 // Configs //
 const UserConfig = require('../config/ModelsConfig.json');
 const AuthConfig = require('../config/AuthConfig.json');
-// Errors //
-const NotFoundError = require('../Errors/NotFoundError');
-const UnauthorizedError = require('../Errors/UnauthorizedError');
+// errors //
+const NotFoundError = require('../errors/NotFoundError');
+const UnauthorizedError = require('../errors/UnauthorizedError');
 
 class UserService {
     async GetAll() {

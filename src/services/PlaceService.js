@@ -1,7 +1,7 @@
 const placeRepository = require('../repositories/PlaceRepository');
 const hallRepository = require('../repositories/HallRepository');
-// Errors //
-const NotFondError = require('../Errors/NotFoundError');
+// errors //
+const NotFondError = require('../errors/NotFoundError');
 
 class PlaceService {
     async GetAll() {

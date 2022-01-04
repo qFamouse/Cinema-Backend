@@ -1,4 +1,4 @@
-const HttpStatusCodeError = require("../Errors/HttpStatusCodeError");
+const HttpStatusCodeError = require("HttpStatusCodeError");
 
 class NotAcceptableError extends HttpStatusCodeError {
     constructor(message) {
