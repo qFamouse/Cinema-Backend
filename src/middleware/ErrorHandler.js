@@ -1,9 +1,12 @@
 const Response = require("../utils/Response");
 const HttpStatusCodeError = require("../errors/HttpStatusCodeError");
 const ValidationError = require('sequelize').ValidationError;
+const MongoLogger = require('./../utils/MongoLogger');
 
 module.exports = (error, req, res, next) => {
-    console.log(error.name);
+    error.route = req.path;
+    MongoLogger.LogError(error);
+
     if (error instanceof HttpStatusCodeError) {
         res.status(error.status || 500).json(new Response(error.message, error.status || 500));
     }

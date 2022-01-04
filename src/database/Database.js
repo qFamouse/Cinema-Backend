@@ -64,7 +64,7 @@ booking.belongsTo(ticket);
 ticket.hasMany(booking);
 
 sequelize.sync().then(result => {
-    //console.log(result);
+    // console.log(result);
 }).catch(err => console.log(err));
 
 sequelize.authenticate()

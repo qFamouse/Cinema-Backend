@@ -2,6 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
+const mongoLogger = require("../utils/MongoLogger");
 
 const userRouter = require('../routers/UserRoute');
 const roleRouter = require('../routers/RoleRoute');
@@ -19,6 +20,7 @@ const reviewRouter = require('../routers/ReviewRoute');
 // /signin
 // use is authorized
 
+router.use(mongoLogger.LogHttpEvent);
 router.use('/users', userRouter);
 router.use('/roles', roleRouter);
 router.use('/countries', countryRouter);
