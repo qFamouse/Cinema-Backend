@@ -1,7 +1,7 @@
 const placeRepository = require('../repositories/PlaceRepository');
 const hallRepository = require('../repositories/HallRepository');
 // errors //
-const NotFondError = require('../errors/NotFoundError');
+const NotFoundError = require('../errors/NotFoundError');
 
 class PlaceService {
     async GetAll() {
@@ -34,7 +34,7 @@ class PlaceService {
             await hallRepository.DecreaseSeatById(place.hallId);
         }
         else {
-            throw new NotFondError('No such place')
+            throw new NotFoundError('No such place')
         }
     }
 }
