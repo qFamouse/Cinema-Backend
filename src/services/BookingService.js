@@ -9,7 +9,7 @@ class BookingService {
         return await bookingRepository.GetDetailedById(bookingId);
     }
 
-    async CreateOne(booking) {
+    async Create(booking) {
         return await bookingRepository.Create(booking);
     }
 
