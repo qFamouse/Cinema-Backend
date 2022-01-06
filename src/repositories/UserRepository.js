@@ -1,15 +1,16 @@
-const sequelize = require('../database/Database');
+const sequelize = require('../config/DatabaseConfig');
 const UserInfo = require("../models/UserInfo");
+const User = require('../models/User');
 const Op = require('sequelize').Op;
 
 
 class UserRepository {
     async GetAll() {
-        return await sequelize.models.user.findAll();
+        return await User.findAll();
     }
 
     async GetById(userId) {
-        return await sequelize.models.user.findOne({
+        return await User.findOne({
             where: {
                 id: userId
             }
@@ -19,7 +20,7 @@ class UserRepository {
     }
 
     async GetDetailById(userId) {
-        return await sequelize.models.user.findOne({
+        return await User.findOne({
             include: { model: UserInfo, as: 'UserInfo' },
             where: { id: userId }
         })
@@ -28,13 +29,13 @@ class UserRepository {
     // Get Only ONE user with the specified fields
     // Send object with fields: {login: user.login, id: 10}
     async GetOneByQuery(query) {
-        return await sequelize.models.user.findOne({ where: query })
+        return await User.findOne({ where: query })
     }
 
     // Get Many users with the specified fields
     // Send array with object fields: [{id: 10}, {login: 'ds11d1s111d'}, {login: 'MrTester610'}]
     async GetAllByQuery(query) {
-        return await sequelize.models.user.findAll({
+        return await User.findAll({
             include: [{
                 model: UserInfo,
                 as: 'UserInfo'
@@ -48,7 +49,7 @@ class UserRepository {
     async Create(user, role, userInfo) {
         return await sequelize.transaction(
             async (t) => {
-                user = await sequelize.models.user.create(user, { transaction: t });
+                user = await User.create(user, { transaction: t });
                 userInfo = await user.createUserInfo(userInfo, { transaction: t });
                 await user.addRole(role, {transaction: t});
 
@@ -59,7 +60,7 @@ class UserRepository {
     }
 
     async EditById(userId, user) {
-        return await sequelize.models.user.update(user, {
+        return await User.update(user, {
             where: {
                 id: userId
             }
@@ -67,7 +68,7 @@ class UserRepository {
     }
 
     async DeleteById(userId) {
-        await sequelize.models.user.destroy({
+        await User.destroy({
             where: {
                 id: userId
             }
