@@ -15,7 +15,7 @@ class TicketController {
             placeId: req.body.placeId
         };
 
-        res.send(await ticketService.CreateOne(ticket));
+        res.send(await ticketService.Create(ticket));
     }
 
     async EditById(req, res) {

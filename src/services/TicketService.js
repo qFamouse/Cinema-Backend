@@ -9,7 +9,7 @@ class TicketService {
         return await ticketRepository.GetDetailedById(ticketId);
     }
 
-    async CreateOne(ticket) {
+    async Create(ticket) {
         return await ticketRepository.Create(ticket);
     }
 
