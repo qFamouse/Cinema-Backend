@@ -1,4 +1,5 @@
 const ticketRepository = require('../repositories/TicketRepository');
+const BadRequestError = require("../Errors/BadRequestError");
 
 class TicketService {
     async GetAll() {
@@ -10,6 +11,10 @@ class TicketService {
     }
 
     async Create(ticket) {
+        if (await ticketRepository.GetOneByQuery(ticket)) {
+            throw new BadRequestError('Ticket already exists');
+        }
+
         return await ticketRepository.Create(ticket);
     }
 
