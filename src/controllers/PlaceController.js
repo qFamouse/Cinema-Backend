@@ -18,7 +18,7 @@ class PlaceController {
             isVip: req.body.isVip
         };
 
-        res.send(await placeService.CreateOne(place));
+        res.send(await placeService.Create(place));
     }
 
     async EditById(req, res) {

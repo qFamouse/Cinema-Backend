@@ -13,7 +13,7 @@ class PlaceService {
         return await placeRepository.GetDetailedById(placeId);
     }
 
-    async CreateOne(place) {
+    async Create(place) {
         place = await placeRepository.Create(place);
 
         if (place) {
