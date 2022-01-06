@@ -11,11 +11,11 @@ class BookingController {
 
     async Create(req, res) {
         let booking = {
-            userId: req.body.userId,
+            userId: req.user.id,
             ticketId: req.body.ticketId
         };
 
-        res.send(await bookingService.CreateOne(booking));
+        res.send(await bookingService.Create(booking));
     }
 
     async EditById(req, res) {

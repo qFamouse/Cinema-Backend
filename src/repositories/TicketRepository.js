@@ -37,6 +37,10 @@ class TicketRepository {
             }
         });
     }
+
+    async GetOneByQuery(query) {
+        return await Ticket.findOne({ where: query })
+    }
 }
 
 module.exports = new TicketRepository();

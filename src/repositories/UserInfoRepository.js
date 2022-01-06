@@ -1,13 +1,12 @@
-const sequelize = require('../database/Database');
 const UserInfo = require("../models/UserInfo");
 
 class UserInfoRepository {
     async GetAll() {
-        return await sequelize.models.user_info.findAll();
+        return await UserInfo.findAll();
     }
 
     async GetByUserId(userId) {
-        return await sequelize.models.user_info.findOne({
+        return await UserInfo.findOne({
             where: {
                 userId: userId
             }
@@ -15,11 +14,11 @@ class UserInfoRepository {
     }
 
     async Create(userInfo) {
-        return sequelize.models.user_info.create(userInfo)
+        return UserInfo.create(userInfo)
     }
 
     async EditByUserId(userId, userInfo) {
-        await sequelize.models.user_info.update(userInfo, {
+        await UserInfo.update(userInfo, {
             where: {
                 userId: userId
             }
