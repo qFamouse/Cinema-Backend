@@ -42,6 +42,10 @@ class PlaceRepository {
             }
         });
     }
+
+    async GetOneByQuery(query) {
+        return await Place.findOne({ where: query })
+    }
 }
 
 module.exports = new PlaceRepository();
