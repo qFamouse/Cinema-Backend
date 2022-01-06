@@ -3,6 +3,7 @@ const hallRepository = require('../repositories/HallRepository');
 
 // Errors //
 const NotFondError = require('../Errors/NotFoundError');
+const BadRequestError = require('../Errors/BadRequestError');
 
 class PlaceService {
     async GetAll() {
@@ -14,6 +15,10 @@ class PlaceService {
     }
 
     async Create(place) {
+        if (await placeRepository.GetOneByQuery(place)) {
+            throw new BadRequestError('Place already exists');
+        }
+
         place = await placeRepository.Create(place);
 
         if (place) {
