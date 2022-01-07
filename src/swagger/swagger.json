@@ -6,7 +6,7 @@
     "description": "Web application for cinema operation"
   },
   "host": "",
-  "basePath": "",
+  "basePath": "/",
   "tags": [
     {
       "name": "Users",

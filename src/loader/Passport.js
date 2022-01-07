@@ -10,6 +10,7 @@ let options = {
 }
 
 passport.use(new JWTStrategy(options, async function(jwt_payload, done) {
+    console.log('hire');
     try {
         const user = await userService.GetDetailById(jwt_payload.userId);
         if (!user) {

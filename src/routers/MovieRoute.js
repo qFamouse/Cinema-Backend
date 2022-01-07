@@ -5,7 +5,9 @@ const validate = require('../middleware/Validate');
 const movieScheme = require('../schemes/MovieScheme');
 
 const movieController = require('../controllers/MovieController');
+const mongoLogger = require("../utils/MongoLogger");
 
+router.use(mongoLogger.LogHttpEvent);
 router.get('/', movieController.GetAll
     /*
     #swagger.tags = ['Movies']

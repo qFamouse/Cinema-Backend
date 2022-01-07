@@ -11,6 +11,8 @@ const AuthConfig = require('../config/AuthConfig.json');
 // errors //
 const NotFoundError = require('../errors/NotFoundError');
 const UnauthorizedError = require('../errors/UnauthorizedError');
+// Mailer //
+const Mailer = require('../utils/Mailer');
 
 class UserService {
     async GetAll() {
@@ -39,7 +41,18 @@ class UserService {
         // Hashing the password
         user.password = await crypt.CryptPassword(user.password);
 
-        return await userRepository.Create(user, role, userInfo);
+        user = await userRepository.Create(user, role, userInfo);
+
+        let mail = {
+            to: userInfo.email,
+            subject: 'Welcome to Cinema',
+            text: 'Thank you for registering at the cinema',
+            html: '<b>You are welcome!</b>'
+        }
+
+        await Mailer(JSON.stringify(mail));
+
+        return user;
     }
 
     async Login(user) {

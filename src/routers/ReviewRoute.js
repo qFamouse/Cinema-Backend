@@ -7,8 +7,10 @@ const reviewScheme = require('../schemes/ReviewScheme');
 const isAuthorize = require('../middleware/IsAuthorize');
 
 const reviewController = require('../controllers/ReviewController');
+const mongoLogger = require("../utils/MongoLogger");
 
 router.use(isAuthorize);
+router.use(mongoLogger.LogHttpEvent);
 router.get('/', reviewController.GetAll
     /*
     #swagger.tags = ['Reviews']

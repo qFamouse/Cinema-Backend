@@ -7,8 +7,10 @@ const countryScheme = require('../schemes/CountryScheme');
 const isAuthorize = require('../middleware/IsAuthorize');
 
 const countryController = require('../controllers/CountryController');
+const mongoLogger = require("../utils/MongoLogger");
 
 router.use(isAuthorize);
+router.use(mongoLogger.LogHttpEvent);
 router.get('/', countryController.GetAll
     /*
     #swagger.tags = ['Countries']

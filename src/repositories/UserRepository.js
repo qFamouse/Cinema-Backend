@@ -53,8 +53,9 @@ class UserRepository {
                 userInfo = await user.createUserInfo(userInfo, { transaction: t });
                 await user.addRole(role, {transaction: t});
 
-                userInfo['userId'] = undefined; // We already have id in 'user'
-                return {...user.get(), ...userInfo.get()};
+                // userInfo['id'] = userInfo['userId'] = undefined; // We already have id in 'user'
+                // return {...user.get(), ...userInfo.get()};
+                return user;
             }
         )
     }

@@ -7,6 +7,7 @@ const userScheme = require('../schemes/UserScheme');
 const isAuthorize = require('../middleware/IsAuthorize');
 
 const userController = require('../controllers/UserController');
+const mongoLogger = require("../utils/MongoLogger");
 
 router.post('/login', userController.Login
     /*
@@ -17,6 +18,7 @@ router.post('/register', validate(userScheme.create), userController.Register
     #swagger.tags = ['Users']
     */);
 router.use(isAuthorize);
+router.use(mongoLogger.LogHttpEvent);
 router.get('/', userController.GetAll
     /*
     #swagger.tags = ['Users']

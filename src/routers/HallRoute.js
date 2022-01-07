@@ -7,8 +7,10 @@ const hallScheme = require('../schemes/HallScheme');
 const isAuthorize = require('../middleware/IsAuthorize');
 
 const hallController = require('../controllers/HallController');
+const mongoLogger = require("../utils/MongoLogger");
 
 router.use(isAuthorize);
+router.use(mongoLogger.LogHttpEvent);
 router.get('/', hallController.GetAll
     /*
     #swagger.tags = ['Halls']

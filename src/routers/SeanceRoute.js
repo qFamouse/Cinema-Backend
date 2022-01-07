@@ -5,10 +5,13 @@ const validate = require('../middleware/Validate');
 const seanceScheme = require('../schemes/SeanceScheme');
 
 const isAuthorize = require('../middleware/IsAuthorize');
+const mongoLogger = require("../utils/MongoLogger");
 
 const seanceController = require('../controllers/SeanceController');
 
+
 router.use(isAuthorize);
+router.use(mongoLogger.LogHttpEvent);
 router.get('/', seanceController.GetAll
     /*
     #swagger.tags = ['Seances']

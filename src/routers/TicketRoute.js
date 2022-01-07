@@ -7,8 +7,10 @@ const ticketScheme = require('../schemes/TicketScheme');
 const isAuthorize = require('../middleware/IsAuthorize');
 
 const ticketController = require('../controllers/TicketController');
+const mongoLogger = require("../utils/MongoLogger");
 
 router.use(isAuthorize);
+router.use(mongoLogger.LogHttpEvent);
 router.get('/', ticketController.GetAll
     /*
     #swagger.tags = ['Tickets']
