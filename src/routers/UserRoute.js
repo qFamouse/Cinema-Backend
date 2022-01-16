@@ -9,7 +9,7 @@ const isAuthorize = require('../middleware/IsAuthorize');
 const userController = require('../controllers/UserController');
 const mongoLogger = require("../utils/MongoLogger");
 
-router.post('/login', userController.Login
+router.post('/login', validate(userScheme.login), userController.Login
     /*
     #swagger.tags = ['Users']
     */);

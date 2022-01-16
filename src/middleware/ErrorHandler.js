@@ -1,6 +1,7 @@
 const Response = require("../utils/Response");
 const HttpStatusCodeError = require("../errors/HttpStatusCodeError");
-const ValidationError = require('sequelize').ValidationError;
+const SequelizeValidationError = require('sequelize').ValidationError;
+const JoiValidationError = require('joi').ValidationError;
 const MongoLogger = require('./../utils/MongoLogger');
 
 module.exports = (error, req, res, next) => {
@@ -10,7 +11,7 @@ module.exports = (error, req, res, next) => {
     if (error instanceof HttpStatusCodeError) {
         res.status(error.status || 500).json(new Response(error.message, error.status || 500));
     }
-    else if (error instanceof ValidationError) {
+    else if (error instanceof SequelizeValidationError || error instanceof JoiValidationError) {
         res.status(error.status || 400).json(new Response(error.errors[0].message, error.status || 400));
     }
     else {

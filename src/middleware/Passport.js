@@ -1,7 +1,7 @@
 const passport = require('passport');
 const JWTStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
-const userService = require('../services/userService');
+const userService = require('../services/UserService');
 const AuthConfig = require('../config/AuthConfig.json');
 
 let options = {
@@ -10,7 +10,6 @@ let options = {
 }
 
 passport.use(new JWTStrategy(options, async function(jwt_payload, done) {
-    console.log('hire');
     try {
         const user = await userService.GetDetailById(jwt_payload.userId);
         if (!user) {

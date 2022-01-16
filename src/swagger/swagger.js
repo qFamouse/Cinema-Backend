@@ -71,7 +71,7 @@ const doc = {
 
 
 const outputFile = 'src/swagger/swagger.json';
-const endpointsFiles = ['src/loader/Routing.js'];
+const endpointsFiles = ['./src/loader/Routing.js'];
 
 /* NOTE: if you use the express Router, you must pass in the
    'endpointsFiles' only the root file where the route starts,
