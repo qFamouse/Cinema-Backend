@@ -16,6 +16,14 @@ class MovieRepository {
         });
     }
 
+    async GetById(movieId) {
+        return await Movie.findOne({
+            where: {
+                id: movieId
+            }
+        })
+    }
+
     async Create(movie) {
         return Movie.create(movie);
     }

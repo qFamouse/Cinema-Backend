@@ -76,7 +76,9 @@ const MovieScheme = {
 
             endRentalDate: Joi.string()
         }
-    )
+    ),
+
+    setPoster: Joi.object().schema()
 };
 
 module.exports = MovieScheme;

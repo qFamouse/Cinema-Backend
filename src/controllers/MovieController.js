@@ -51,6 +51,14 @@ class MovieController {
         await movieService.DeleteById(req.params.id);
         res.send('Ok');
     }
+
+    async SetPosterById(req, res) {
+        res.send(await movieService.SetPosterById(req.params.id, req.file));
+    }
+
+    async GetPoster(req, res) {
+        res.sendFile(await movieService.GetPosterById(req.params.id));
+    }
 }
 
 module.exports = new MovieController();
