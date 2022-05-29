@@ -4,7 +4,7 @@ const MongoLogger = require('./../utils/MongoLogger');
 module.exports = new Sequelize('cinema', 'postgres', null, {
     host: 'localhost',
     dialect: 'postgres',
-    port: 5439,
+    port: 5432,
     pool: {
         max: 5,
         min: 0,
