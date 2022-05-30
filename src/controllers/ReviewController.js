@@ -12,7 +12,7 @@ class ReviewController {
     async Create(req, res) {
         let review = {
             movieId: req.body.movieId,
-            userId: req.body.userId,
+            userId: req.user.id,
             rating: req.body.rating,
             review: req.body.review
         };
@@ -23,7 +23,7 @@ class ReviewController {
     async EditById(req, res) {
         let review = {
             movieId: req.body.movieId,
-            userId: req.body.userId,
+            userId: req.user.id,
             rating: req.body.rating,
             review: req.body.review
         };
