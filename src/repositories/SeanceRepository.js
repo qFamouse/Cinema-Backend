@@ -2,10 +2,34 @@ const sequelize = require('../database/Database');
 
 const Movie = require('../models/Movie');
 const Hall = require('../models/Hall');
+const Seance = require('../models/Seance');
+const {Op} = require("sequelize");
 
 class SeanceRepository {
     async GetAll() {
         return await sequelize.models.seance.findAll();
+    }
+
+    async GetRepertoire(from, to) {
+        return await Seance.findAll({
+            raw: true,
+            nest: true,
+            include: [
+                {
+                    model: Hall,
+                    as: 'hall'
+                },
+                {
+                    model: Movie,
+                    as: 'movie'
+                }
+            ],
+            where: {
+                date: {
+                    [Op.between]: [from, to]
+                }
+            }
+        })
     }
 
     async GetDetailedById(seanceId) {

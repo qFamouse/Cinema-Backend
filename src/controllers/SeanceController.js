@@ -5,6 +5,13 @@ class SeanceController {
         res.send(await seanceService.GetAll());
     }
 
+    async GetRepertoire(req, res) {
+        res.send(await seanceService.GetRepertoire(
+            req.body.from,
+            req.body.to
+        ))
+    }
+
     async GetDetailedById(req, res) {
         res.send(await seanceService.GetDetailedById(req.params.id))
     }

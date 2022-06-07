@@ -10,9 +10,13 @@ const mongoLogger = require("../utils/MongoLogger");
 const seanceController = require('../controllers/SeanceController');
 
 
-router.use(isAuthorize);
 router.use(mongoLogger.LogHttpEvent);
 router.get('/', seanceController.GetAll
+    /*
+    #swagger.tags = ['Seances']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
+router.get('/repertoire', validate(seanceScheme.repertoire), seanceController.GetRepertoire
     /*
     #swagger.tags = ['Seances']
     #swagger.security = [{ "bearerAuth": [] }]
@@ -22,6 +26,7 @@ router.get('/:id', seanceController.GetDetailedById
     #swagger.tags = ['Seances']
     #swagger.security = [{ "bearerAuth": [] }]
     */);
+router.use(isAuthorize);
 router.post('/', validate(seanceScheme.create), seanceController.Create
     /*
     #swagger.tags = ['Seances']
