@@ -1,6 +1,7 @@
 const seanceRepository = require('../repositories/SeanceRepository');
 const hallRepository = require('../repositories/HallRepository');
 const {exist} = require("joi");
+const date = require('date-and-time')
 
 class SeanceService {
     async GetAll() {
@@ -22,6 +23,9 @@ class SeanceService {
 
             seance.hallId = undefined;
             seance.hall = undefined;
+            seance.movie.genre = seance.movie.genre.name;
+            seance.movie.country = seance.movie.country.name;
+            // seance.date = date.format(seance.date,'YYYY-MM-DD HH:mm');
 
             hall.seances.push(seance);
         })
