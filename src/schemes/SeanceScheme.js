@@ -13,13 +13,6 @@ const SeanceScheme = {
         }
     ),
 
-    repertoire: Joi.object().keys(
-        {
-            from: Joi.date().required(),
-            to: Joi.date().required()
-        }
-    ),
-
     edit: Joi.object().keys(
         {
             hallId: Joi.number().integer(),

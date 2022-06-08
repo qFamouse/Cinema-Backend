@@ -16,7 +16,7 @@ router.get('/', seanceController.GetAll
     #swagger.tags = ['Seances']
     #swagger.security = [{ "bearerAuth": [] }]
     */);
-router.get('/repertoire', validate(seanceScheme.repertoire), seanceController.GetRepertoire
+router.get('/repertoire', seanceController.GetRepertoire
     /*
     #swagger.tags = ['Seances']
     #swagger.security = [{ "bearerAuth": [] }]

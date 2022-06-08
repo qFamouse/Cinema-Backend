@@ -7,8 +7,8 @@ class SeanceController {
 
     async GetRepertoire(req, res) {
         res.send(await seanceService.GetRepertoire(
-            req.body.from,
-            req.body.to
+            req.query.from,
+            req.query.to
         ))
     }
 
