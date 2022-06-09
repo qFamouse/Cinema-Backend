@@ -35,8 +35,10 @@ class MovieService {
         let movie = await movieRepository.GetById(movieId);
 
         if (movie) {
-            // try to delete movie poster
-            fs.unlink(`${file.destination}/${movie.poster}`, (err) => {});
+            if (movie.poster !== 'poster.jpg') {
+                // try to delete movie poster
+                fs.unlink(`${file.destination}/${movie.poster}`, (err) => {});
+            }
             return await movieRepository.EditById(movieId, {poster: file.filename});
         }
         else {

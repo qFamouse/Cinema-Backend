@@ -8,10 +8,8 @@ const MovieScheme = {
                 .max(256)
                 .required(),
 
-            genreId: Joi.number()
+            genre: Joi.string().max(30)
                 .required(),
-
-            poster: Joi.string(),
 
             duration: Joi.string()
                 .required(),
@@ -23,7 +21,7 @@ const MovieScheme = {
             date: Joi.string()
                 .required(),
 
-            countryId: Joi.number()
+            country: Joi.string().max(30)
                 .required(),
 
             director: Joi.string()
@@ -51,8 +49,6 @@ const MovieScheme = {
                 .max(256),
 
             genreId: Joi.number(),
-
-            poster: Joi.string(),
 
             duration: Joi.string(),
 

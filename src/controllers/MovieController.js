@@ -16,12 +16,12 @@ class MovieController {
     async CreateOne(req, res) {
         let movie = {
             title: req.body.title,
-            genreId: req.body.genreId,
-            poster: req.body.poster,
+            genre: req.body.genre,
+            poster: 'poster.jpg',
             duration: req.body.duration,
             ageLimit: req.body.ageLimit,
             date: req.body.date,
-            countryId: req.body.countryId,
+            country: req.body.country,
             director: req.body.director,
             actors: req.body.actors,
             synopsis: req.body.synopsis,
@@ -35,12 +35,11 @@ class MovieController {
     async EditById(req, res) {
         let movie = {
             title: req.body.title,
-            genreId: req.body.genreId,
-            poster: req.body.poster,
+            genre: req.body.genre,
             duration: req.body.duration,
             ageLimit: req.body.ageLimit,
             date: req.body.date,
-            countryId: req.body.countryId,
+            country: req.body.country,
             director: req.body.director,
             actors: req.body.actors,
             synopsis: req.body.synopsis,
