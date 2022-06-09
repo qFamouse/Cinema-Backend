@@ -8,7 +8,7 @@ const isAuthorize = require('../middleware/IsAuthorize');
 
 const roleController = require('../controllers/RoleController');
 
-router.use(isAuthorize);
+// router.use(isAuthorize);
 router.get('/', roleController.GetAll
     /*
     #swagger.tags = ['Roles']

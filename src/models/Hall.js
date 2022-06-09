@@ -16,19 +16,19 @@ const Hall = sequelize.define('hall', {
         unique: true,
         field: 'name'
     },
-    floorCount: {
-        type: Sequelize.INTEGER,
+    rows: {
+        type: Sequelize.INTEGER.UNSIGNED,
         allowNull: false,
         unique: false,
-        field: 'floor_count'
+        field: 'rows'
     },
-    placeCount: {
-        type: Sequelize.INTEGER,
-        allowNull: true,
+    seats: {
+        type: Sequelize.INTEGER.UNSIGNED,
+        allowNull: false,
         unique: false,
-        field: 'place_count',
-        defaultValue: 0
+        field: 'seats'
     }
+
 },
 {
     timestamps: false

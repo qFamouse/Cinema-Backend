@@ -36,6 +36,11 @@ router.get('/', movieController.GetAll
     #swagger.tags = ['Movies']
     #swagger.security = [{ "bearerAuth": [] }]
     */);
+router.get('/soon', movieController.GetSoon
+    /*
+    #swagger.tags = ['Movies']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */);
 router.get('/:id', movieController.GetDetailedById
     /*
     #swagger.tags = ['Movies']

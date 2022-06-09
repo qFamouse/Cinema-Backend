@@ -6,8 +6,8 @@ const user       = require('../models/User');
 const userInfo   = require('../models/UserInfo');
 const userRole   = require('../models/UserRole');
 const role       = require('../models/Role');
-const country   = require('../models/Countries');
-const genre      = require('../models/Genre');
+// const country   = require('../models/Countries');
+// const genre      = require('../models/Genre');
 const movie      = require('../models/Movie');
 const review     = require('../models/Review');
 const hall       = require('../models/Hall');
@@ -25,11 +25,11 @@ user.belongsToMany(role, { through: 'users_roles' });
 role.belongsToMany(user, { through: 'users_roles' });
 
 // Movies 
-movie.belongsTo(genre);
-genre.hasMany(movie);
-
-movie.belongsTo(country);
-country.hasMany(movie);
+// movie.belongsTo(genre);
+// genre.hasMany(movie);
+//
+// movie.belongsTo(country);
+// country.hasMany(movie);
 
 // Reviews
 review.belongsTo(movie);

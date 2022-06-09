@@ -16,12 +16,6 @@ const Place = sequelize.define('place', {
         unique: false,
         field: 'hall_id'
     },
-    floor: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        unique: false,
-        field: 'floor'
-    },
     seat: {
         type: Sequelize.INTEGER,
         allowNull: false,

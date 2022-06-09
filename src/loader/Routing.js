@@ -6,8 +6,6 @@ const router = express.Router();
 
 const userRouter = require('../routers/UserRoute');
 const roleRouter = require('../routers/RoleRoute');
-const countryRouter = require('../routers/CountryRoute');
-const genreRouter = require('../routers/GenreRoute');
 const movieRouter = require('../routers/MovieRoute');
 const seanceRouter = require('../routers/SeanceRoute');
 const hallRouter = require('../routers/HallRoute');
@@ -22,8 +20,8 @@ const reviewRouter = require('../routers/ReviewRoute');
 
 router.use('/users', userRouter);
 router.use('/roles', roleRouter);
-router.use('/countries', countryRouter);
-router.use('/genres', genreRouter);
+// router.use('/countries', countryRouter);
+// router.use('/genres', genreRouter);
 router.use('/movies', movieRouter);
 router.use('/seances', seanceRouter);
 router.use('/halls', hallRouter);

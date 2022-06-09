@@ -9,6 +9,10 @@ class MovieController {
         res.send(await movieService.GetDetailedById(req.params.id))
     }
 
+    async GetSoon(req, res) {
+        res.send(await movieService.GetSoon());
+    }
+
     async CreateOne(req, res) {
         let movie = {
             title: req.body.title,

@@ -3,8 +3,6 @@ const sequelize = require('../database/Database');
 const Movie = require('../models/Movie');
 const Hall = require('../models/Hall');
 const Seance = require('../models/Seance');
-const Genre = require('../models/Genre');
-const Country = require('../models/Countries');
 const {Op} = require("sequelize");
 
 class SeanceRepository {
@@ -24,7 +22,6 @@ class SeanceRepository {
                 {
                     model: Movie,
                     as: 'movie',
-                    include: [Genre, Country]
                 }
             ],
             where: {

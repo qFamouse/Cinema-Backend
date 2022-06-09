@@ -16,11 +16,11 @@ const Movie = sequelize.define('movie', {
         unique: false,
         field: 'title'
     },
-    genreId: {
-        type: Sequelize.INTEGER.UNSIGNED,
+    genre: {
+        type: Sequelize.STRING(30),
         allowNull: false,
         unique: false,
-        field: 'genre_id'
+        field: 'genre'
     },
     poster: {
         type: Sequelize.STRING(256),
@@ -46,20 +46,20 @@ const Movie = sequelize.define('movie', {
         unique: false,
         field: 'date'
     },
-    countryId: {
-        type: Sequelize.INTEGER.UNSIGNED,
+    country: {
+        type: Sequelize.STRING(30),
         allowNull: false,
         unique: false,
-        field: 'country_id'
+        field: 'country'
     },
     director: {
-        type: Sequelize.STRING(256),
+        type: Sequelize.STRING,
         allowNull: false,
         unique: false,
         field: 'director'
     },
     actors: {
-        type: Sequelize.STRING(256),
+        type: Sequelize.STRING,
         allowNull: false,
         unique: false,
         field: 'actors'
@@ -68,7 +68,7 @@ const Movie = sequelize.define('movie', {
         type: Sequelize.STRING,
         allowNull: false,
         unique: false,
-        field: 'actors'
+        field: 'synopsis'
     },
     startRentalDate: {
         type: Sequelize.DATEONLY,

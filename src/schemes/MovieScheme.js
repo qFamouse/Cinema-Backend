@@ -4,7 +4,6 @@ const MovieScheme = {
     create: Joi.object().keys(
         {
             title: Joi.string()
-                .alphanum()
                 .min(1)
                 .max(256)
                 .required(),

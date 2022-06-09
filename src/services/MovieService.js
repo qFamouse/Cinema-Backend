@@ -12,6 +12,10 @@ class MovieService {
         return await movieRepository.GetDetailedById(movieId);
     }
 
+    async GetSoon() {
+        return await movieRepository.GetSoon();
+    }
+
     async Create(movie) {
         return await movieRepository.Create(movie);
     }

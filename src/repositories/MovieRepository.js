@@ -1,6 +1,6 @@
-const Genre = require('../models/Genre');
-const Country = require('../models/Countries');
 const Movie = require('../models/Movie');
+const Hall = require("../models/Hall");
+const {Op} = require("sequelize");
 
 class MovieRepository {
     async GetAll() {
@@ -9,11 +9,23 @@ class MovieRepository {
 
     async GetDetailedById(movieId) {
         return await Movie.findOne({
-            include: [Genre, Country],
             where: {
                 id: movieId
             }
         });
+    }
+
+    async GetSoon() {
+        return await Movie.findAll({
+            where: {
+                startRentalDate: {
+                    [Op.between]: [new Date(), new Date(new Date().getFullYear(), 11, 31)]
+                }
+            },
+            order: [
+                ['date', 'ASC']
+            ]
+        })
     }
 
     async GetById(movieId) {
