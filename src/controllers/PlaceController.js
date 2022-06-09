@@ -12,7 +12,6 @@ class PlaceController {
     async Create(req, res) {
         let place = {
             hallId: req.body.hallId,
-            floor: req.body.floor,
             seat: req.body.seat,
             row: req.body.row,
             isVip: req.body.isVip
@@ -24,7 +23,6 @@ class PlaceController {
     async EditById(req, res) {
         let place = {
             hallId: req.body.hallId,
-            floor: req.body.floor,
             seat: req.body.seat,
             row: req.body.row,
             isVip: req.body.isVip

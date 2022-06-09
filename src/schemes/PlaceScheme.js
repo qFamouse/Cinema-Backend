@@ -7,10 +7,6 @@ const PlaceScheme = {
                 .integer()
                 .required(),
 
-            floor: Joi.number()
-                .integer()
-                .required(),
-
             seat: Joi.number()
                 .integer()
                 .required(),
@@ -27,9 +23,6 @@ const PlaceScheme = {
     edit: Joi.object().keys(
         {
             hallId: Joi.number()
-                .integer(),
-
-            floor: Joi.number()
                 .integer(),
 
             seat: Joi.number()
