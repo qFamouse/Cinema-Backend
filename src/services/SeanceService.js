@@ -23,8 +23,8 @@ class SeanceService {
 
             seance.hallId = undefined;
             seance.hall = undefined;
-            seance.movie.genre = seance.movie.genre.name;
-            seance.movie.country = seance.movie.country.name;
+            // seance.movie.genre = seance.movie.genre.name;
+            // seance.movie.country = seance.movie.country.name;
             // seance.date = date.format(seance.date,'YYYY-MM-DD HH:mm');
 
             hall.seances.push(seance);
