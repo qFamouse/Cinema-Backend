@@ -12,8 +12,8 @@ class HallController {
     async CreateOne(req, res) {
         let hall = {
             name: req.body.name,
-            floorCount: req.body.floorCount,
-            placeCount: req.body.placeCount
+            rows: req.body.rows,
+            seats: req.body.seats
         };
 
         res.send(await hallService.CreateOne(hall));
@@ -22,8 +22,8 @@ class HallController {
     async EditById(req, res) {
         let hall = {
             name: req.body.name,
-            floorCount: req.body.floorCount,
-            placeCount: req.body.placeCount
+            rows: req.body.rows,
+            seats: req.body.seats
         };
 
         res.send(await hallService.EditById(req.params.id, hall));

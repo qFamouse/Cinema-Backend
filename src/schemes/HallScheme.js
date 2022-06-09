@@ -7,8 +7,8 @@ const HallScheme = {
                 .max(30)
                 .required(),
 
-            floorCount: Joi.number().integer()
-                .required()
+            rows: Joi.number().required(),
+            seats: Joi.number().required()
         }
     ),
 
@@ -17,7 +17,8 @@ const HallScheme = {
             name: Joi.string()
                 .max(30),
 
-            floorCount: Joi.number().integer()
+            rows: Joi.number(),
+            seats: Joi.number()
         }
     )
 };
