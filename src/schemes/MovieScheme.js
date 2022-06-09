@@ -11,7 +11,7 @@ const MovieScheme = {
             genre: Joi.string().max(30)
                 .required(),
 
-            duration: Joi.string()
+            duration: Joi.number().positive()
                 .required(),
 
             ageLimit: Joi.number()

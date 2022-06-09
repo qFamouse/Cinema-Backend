@@ -29,7 +29,7 @@ const Movie = sequelize.define('movie', {
         field: 'poster'
     },
     duration: {
-        type: Sequelize.TIME,
+        type: Sequelize.INTEGER.UNSIGNED,
         allowNull: false,
         unique: false,
         field: 'duration'
