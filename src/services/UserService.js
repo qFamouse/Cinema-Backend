@@ -73,7 +73,20 @@ class UserService {
 
         let token = jwt.encode(payload, AuthConfig.SecretKey);
 
-        return { token: token };
+        let detailUser = await userRepository.GetDetailById(user.id);
+        detailUser = detailUser.get();
+        detailUser.token = token;
+        detailUser.avatar = detailUser.UserInfo.avatar;
+        detailUser.firstName = detailUser.UserInfo.firstName;
+        detailUser.birthday = detailUser.UserInfo.birthday;
+        detailUser.email = detailUser.UserInfo.email;
+        detailUser.phone = detailUser.UserInfo.phone;
+        detailUser.registerAt = detailUser.UserInfo.registerAt;
+        detailUser.lastVisitAt = detailUser.UserInfo.lastVisitAt;
+        detailUser.updatedAt = detailUser.UserInfo.updatedAt;
+        detailUser.UserInfo = undefined;
+
+        return detailUser;
     }
 
     async EditById(userId, user, userInfo) {
