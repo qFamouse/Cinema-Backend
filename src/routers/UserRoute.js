@@ -24,6 +24,7 @@ router.get('/', userController.GetAll
     #swagger.tags = ['Users']
     #swagger.security = [{ "bearerAuth": [] }]
     */);
+router.get('/user', userController.GetCurrentUser)
 router.get('/:id', userController.GetById
     /*
     #swagger.tags = ['Users']

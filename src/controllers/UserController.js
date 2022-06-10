@@ -6,6 +6,11 @@ class UserController {
     async GetAll(req, res) {
         res.send(await userService.GetAll());
     }
+
+    async GetCurrentUser(req, res) {
+        res.send(await userService.GetDetailById(req.user.id));
+    }
+
     async GetById(req, res) {
         res.send(await userService.GetDetailById(req.params.id))
     }
