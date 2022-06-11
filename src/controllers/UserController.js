@@ -83,6 +83,14 @@ class UserController {
 
         res.send(await userService.Login(user));
     }
+
+    async SetAvatarByCurrentUser(req, res) {
+        res.send(await userService.SetAvatarById(req.user.id, req.file));
+    }
+
+    async GetAvatarByCurrentUser(req, res) {
+        res.sendFile(await userService.GetAvatarById(req.user.id));
+    }
 }
 
 module.exports = new UserController();
