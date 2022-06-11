@@ -11,6 +11,25 @@ class UserController {
         res.send(await userService.GetDetailById(req.user.id));
     }
 
+    async UpdateCurrentUser(req, res) {
+        let userId = req.user.id;
+
+        let user = {
+            login: req.body.login,
+            password: req.body.password
+        };
+
+        let userInfo = {
+            avatar: req.body.avatar,
+            firstName: req.body.firstName,
+            birthday: req.body.birthday,
+            email: req.body.email,
+            phone: req.body.phone
+        };
+
+        res.send(await userService.EditCurrentUser(userId, user, userInfo));
+    }
+
     async GetById(req, res) {
         res.send(await userService.GetDetailById(req.params.id))
     }

@@ -67,26 +67,9 @@ class UserService {
             throw new UnauthorizedError('Bad password') // 401 : RFC 7235
         }
 
-        let payload = {
-            userId: user.id,
-        }
+        let token = this.GenerateToken(user.id)
 
-        let token = jwt.encode(payload, AuthConfig.SecretKey);
-
-        let detailUser = await userRepository.GetDetailById(user.id);
-        detailUser = detailUser.get();
-        detailUser.token = token;
-        detailUser.avatar = detailUser.UserInfo.avatar;
-        detailUser.firstName = detailUser.UserInfo.firstName;
-        detailUser.birthday = detailUser.UserInfo.birthday;
-        detailUser.email = detailUser.UserInfo.email;
-        detailUser.phone = detailUser.UserInfo.phone;
-        detailUser.registerAt = detailUser.UserInfo.registerAt;
-        detailUser.lastVisitAt = detailUser.UserInfo.lastVisitAt;
-        detailUser.updatedAt = detailUser.UserInfo.updatedAt;
-        detailUser.UserInfo = undefined;
-
-        return detailUser;
+        return await this.GetCurrentUser(user.id, token);
     }
 
     async EditById(userId, user, userInfo) {
@@ -102,11 +85,57 @@ class UserService {
             await userInfoRepository.EditByUserId(userId, userInfo);
         }
 
+
         return await userRepository.GetDetailById(userId);
+    }
+
+    async EditCurrentUser(userId, user, userInfo) {
+        if (user) {
+            // If password is not null, then it is supposed that we want to change it
+            if (user.password) {
+                user.password = await crypt.CryptPassword(user.password);
+            }
+            await userRepository.EditById(userId, user);
+        }
+
+        if (userInfo) {
+            await userInfoRepository.EditByUserId(userId, userInfo);
+        }
+
+        let token = this.GenerateToken(userId)
+
+        return await this.GetCurrentUser(userId, token);
     }
 
     async DeleteById(userId) {
         await userRepository.DeleteById(userId);
+    }
+
+    GenerateToken(userId) {
+        let payload = {
+            userId: userId,
+        }
+
+        let token = jwt.encode(payload, AuthConfig.SecretKey);
+
+        return token;
+    }
+
+    async GetCurrentUser(userId, token) {
+        let detailUser = await userRepository.GetDetailById(userId);
+        detailUser = detailUser.get();
+        detailUser.token = token;
+        detailUser.avatar = detailUser.UserInfo.avatar;
+        detailUser.firstName = detailUser.UserInfo.firstName;
+        detailUser.birthday = detailUser.UserInfo.birthday;
+        detailUser.email = detailUser.UserInfo.email;
+        detailUser.phone = detailUser.UserInfo.phone;
+        detailUser.registerAt = detailUser.UserInfo.registerAt;
+        detailUser.lastVisitAt = detailUser.UserInfo.lastVisitAt;
+        detailUser.updatedAt = detailUser.UserInfo.updatedAt;
+        detailUser.UserInfo = undefined;
+
+        return detailUser;
     }
 }
 

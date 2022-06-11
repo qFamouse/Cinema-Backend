@@ -25,6 +25,7 @@ router.get('/', userController.GetAll
     #swagger.security = [{ "bearerAuth": [] }]
     */);
 router.get('/user', userController.GetCurrentUser)
+router.patch('/update', validate(userScheme.edit), userController.UpdateCurrentUser)
 router.get('/:id', userController.GetById
     /*
     #swagger.tags = ['Users']
