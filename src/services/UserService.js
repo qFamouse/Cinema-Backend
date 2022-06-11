@@ -13,6 +13,9 @@ const NotFoundError = require('../errors/NotFoundError');
 const UnauthorizedError = require('../errors/UnauthorizedError');
 // Mailer //
 const Mailer = require('../utils/Mailer');
+const movieRepository = require("../repositories/MovieRepository");
+const fs = require("fs");
+const path = require("path");
 
 class UserService {
     async GetAll() {
@@ -137,6 +140,40 @@ class UserService {
 
         return detailUser;
     }
+
+    async SetAvatarById(userId, file) {
+        if (!file) {
+            throw new Error("Avatar is empty");
+        }
+        let userInfo = await userInfoRepository.GetByUserId(userId);
+
+        if (userInfo) {
+            // try to delete movie poster
+            fs.unlink(`${file.destination}/${userInfo.avatar}`, (err) => {});
+            return await userInfoRepository.EditByUserId(userId, {avatar: file.filename});
+        }
+        else {
+            fs.unlink(file.path, (error) => {
+                if (error) {
+                    throw new Error("Uploaded image could not be deleted");
+                }
+            });
+
+            throw new NotFoundError('No such user');
+        }
+    }
+
+    async GetAvatarById(userId) {
+        let userInfo = await userInfoRepository.GetByUserId(userId);
+        if (userInfo) {
+            return path.join(`${__dirname}/../../uploads/avatars/${userInfo.avatar}`);
+        }
+        else {
+            throw new NotFoundError('No such user');
+        }
+    }
+
+
 }
 
 module.exports = new UserService();
