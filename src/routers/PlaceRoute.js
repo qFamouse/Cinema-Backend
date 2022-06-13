@@ -9,7 +9,6 @@ const isAuthorize = require('../middleware/IsAuthorize');
 const placeController = require('../controllers/PlaceController');
 const mongoLogger = require("../utils/MongoLogger");
 
-router.use(isAuthorize);
 router.use(mongoLogger.LogHttpEvent);
 router.get('/', placeController.GetAll
     /*
@@ -21,6 +20,7 @@ router.get('/:id', placeController.GetPlacesByHallId
     #swagger.tags = ['Places']
     #swagger.security = [{ "bearerAuth": [] }]
     */);
+router.use(isAuthorize);
 router.post('/', validate(placeScheme.create), placeController.Create
     /*
     #swagger.tags = ['Places']
