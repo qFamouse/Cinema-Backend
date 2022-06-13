@@ -9,7 +9,12 @@ class MovieService {
     }
 
     async GetDetailedById(movieId) {
-        return await movieRepository.GetDetailedById(movieId);
+        let movie = await movieRepository.GetDetailedById(movieId);
+        if (!movie) {
+            throw new NotFoundError('No such movie');
+        }
+
+        return movie;
     }
 
     async GetSoon() {
