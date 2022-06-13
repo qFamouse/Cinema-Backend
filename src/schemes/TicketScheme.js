@@ -9,7 +9,9 @@ const TicketScheme = {
 
             placeId: Joi.number()
                 .integer()
-                .required()
+                .required(),
+
+            cost: Joi.number().required()
         }
     ),
 
@@ -19,7 +21,9 @@ const TicketScheme = {
                 .integer(),
 
             placeId: Joi.number()
-                .integer()
+                .integer(),
+
+            cost: Joi.number()
         }
     )
 };
