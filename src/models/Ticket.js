@@ -23,7 +23,7 @@ const Ticket = sequelize.define('ticket', {
         field: 'place_id'
     },
     cost: {
-        type: Sequelize.FLOAT.UNSIGNED,
+        type: Sequelize.FLOAT,
         allowNull: false,
         unique: false,
         field: 'cost'
