@@ -1,5 +1,6 @@
 const ticketRepository = require('../repositories/TicketRepository');
-const BadRequestError = require("../Errors/BadRequestError");
+const BadRequestError = require("../errors/BadRequestError");
+const NotFoundError = require("../errors/NotFoundError");
 
 class TicketService {
     async GetAll() {
