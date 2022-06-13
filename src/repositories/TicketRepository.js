@@ -16,6 +16,14 @@ class TicketRepository {
         });
     }
 
+    async GetBySeanceId(seanceId) {
+        return await Ticket.findAll({
+            where: {
+                seanceId: seanceId
+            }
+        })
+    }
+
     async Create(ticket) {
         return Ticket.create(ticket); // await redundant because is async method and create also async method
     }

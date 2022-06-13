@@ -9,6 +9,10 @@ class TicketController {
         res.send(await ticketService.GetDetailedById(req.params.id))
     }
 
+    async GetBySeanceId(req, res) {
+        res.send(await ticketService.GetBySeanceId(req.params.id))
+    }
+
     async Create(req, res) {
         let ticket = {
             seanceId: req.body.seanceId,

@@ -11,6 +11,14 @@ class TicketService {
         return await ticketRepository.GetDetailedById(ticketId);
     }
 
+    async GetBySeanceId(seanceId) {
+        let tickets = await ticketRepository.GetBySeanceId(seanceId);
+        if (tickets.length < 1) {
+            throw new NotFoundError('Tickets not found');
+        }
+        return tickets;
+    }
+
     async Create(ticket) {
         if (await ticketRepository.GetOneByQuery(ticket)) {
             throw new BadRequestError('Ticket already exists');
