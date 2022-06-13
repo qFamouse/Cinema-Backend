@@ -70,6 +70,12 @@ const Movie = sequelize.define('movie', {
         unique: false,
         field: 'synopsis'
     },
+    youtube: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        unique: false,
+        field: 'youtube'
+    },
     startRentalDate: {
         type: Sequelize.DATEONLY,
         allowNull: false,
