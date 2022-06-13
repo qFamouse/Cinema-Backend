@@ -9,6 +9,10 @@ class PlaceController {
         res.send(await placeService.GetDetailedById(req.params.id))
     }
 
+    async GetPlacesByHallId(req, res) {
+        res.send(await placeService.GetPlacesByHallId(req.params.id))
+    }
+
     async Create(req, res) {
         let place = {
             hallId: req.body.hallId,

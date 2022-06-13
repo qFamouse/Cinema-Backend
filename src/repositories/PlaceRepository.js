@@ -21,6 +21,14 @@ class PlaceRepository {
         });
     }
 
+    async GetPlacesByHallId(hallId) {
+        return await Place.findAll({
+            where: {
+                hallId: hallId
+            }
+        })
+    }
+
     async Create(place) {
         return Place.create(place);
     }

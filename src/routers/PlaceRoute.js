@@ -16,7 +16,7 @@ router.get('/', placeController.GetAll
     #swagger.tags = ['Places']
     #swagger.security = [{ "bearerAuth": [] }]
     */);
-router.get('/:id', placeController.GetDetailedById
+router.get('/:id', placeController.GetPlacesByHallId
     /*
     #swagger.tags = ['Places']
     #swagger.security = [{ "bearerAuth": [] }]
