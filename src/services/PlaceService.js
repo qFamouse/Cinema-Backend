@@ -13,6 +13,10 @@ class PlaceService {
         return await placeRepository.GetDetailedById(placeId);
     }
 
+    async GetPlacesByHallId(hallId) {
+        return await placeRepository.GetPlacesByHallId(hallId);
+    }
+
     async Create(place) {
         if (await placeRepository.GetOneByQuery(
             {
