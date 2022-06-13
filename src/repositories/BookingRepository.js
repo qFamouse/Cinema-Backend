@@ -17,6 +17,14 @@ class BookingRepository {
         });
     }
 
+    async GetById(bookingId) {
+        return await Booking.findOne({
+            where: {
+                id: bookingId
+            }
+        });
+    }
+
     async Create(booking) {
         return Booking.create(booking);
     }

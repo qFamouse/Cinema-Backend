@@ -51,7 +51,8 @@ class SeanceService {
                 seanceId: seance.id,
                 placeId: place.id,
                 cost: parseFloat((Math.random() * (5 - 3) + 3).toFixed(1))
-                    + (place.isVip ? 3 : 0)
+                    + (place.isVip ? 3 : 0),
+                isOccupied: false
             }
 
             ticketRepository.Create(ticket)

@@ -1,4 +1,6 @@
 const bookingRepository = require('../repositories/BookingRepository');
+const ticketRepository = require('../repositories/TicketRepository');
+const NotFoundError = require("../errors/NotFoundError");
 
 class BookingService {
     async GetAll() {
@@ -9,8 +11,14 @@ class BookingService {
         return await bookingRepository.GetDetailedById(bookingId);
     }
 
-    async Create(booking) {
-        return await bookingRepository.Create(booking);
+    async Create(bookingData) {
+        let booking = await bookingRepository.Create(bookingData);
+
+        await ticketRepository.EditById(booking.ticketId, {
+            isOccupied: true
+        })
+
+        return booking;
     }
 
     async EditById(bookingId, booking) {
@@ -18,7 +26,18 @@ class BookingService {
     }
 
     async DeleteById(bookingId) {
-        return await bookingRepository.DeleteById(bookingId);
+        let booking = await bookingRepository.GetById(bookingId);
+        if (booking) {
+            let ticketId = booking.ticketId;
+            await bookingRepository.DeleteById(bookingId);
+
+            await ticketRepository.EditById(ticketId, {
+                isOccupied: true
+            })
+        }
+        else {
+            throw new NotFoundError('Booking is not found');
+        }
     }
 }
 

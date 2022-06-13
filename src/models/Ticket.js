@@ -27,6 +27,13 @@ const Ticket = sequelize.define('ticket', {
         allowNull: false,
         unique: false,
         field: 'cost'
+    },
+    isOccupied: {
+        type: Sequelize.BOOLEAN,
+        default: false,
+        allowNull: false,
+        unique: false,
+        field: 'is_occupied'
     }
 },
 {

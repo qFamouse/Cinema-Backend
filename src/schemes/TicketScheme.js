@@ -11,7 +11,9 @@ const TicketScheme = {
                 .integer()
                 .required(),
 
-            cost: Joi.number().required()
+            cost: Joi.number().required(),
+
+            isOccupied: Joi.boolean()
         }
     ),
 
@@ -23,7 +25,9 @@ const TicketScheme = {
             placeId: Joi.number()
                 .integer(),
 
-            cost: Joi.number()
+            cost: Joi.number(),
+
+            isOccupied: Joi.boolean()
         }
     )
 };
