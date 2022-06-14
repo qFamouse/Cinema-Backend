@@ -36,7 +36,7 @@ class BookingService {
         if (!ticket) {
             throw new NotFoundError('Ticket not found');
         }
-        let booking = await bookingRepository.Create(ticket.id);
+        let booking = await bookingRepository.Create(bookingData);
 
         await ticketRepository.EditById(booking.ticketId, {
             isOccupied: true
