@@ -81,6 +81,13 @@ class BookingRepository {
             }
         });
     }
+
+    // query { userId: 1, ticketId: 1 }
+    async DeleteByQuery(query) {
+        await Booking.destroy({
+            where: query
+        });
+    }
 }
 
 module.exports = new BookingRepository();

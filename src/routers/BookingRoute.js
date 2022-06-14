@@ -36,7 +36,7 @@ router.patch('/:id', validate(bookingScheme.edit), bookingController.EditById
     #swagger.tags = ['Booking']
     #swagger.security = [{ "bearerAuth": [] }]
     */);
-router.delete('/:id', bookingController.DeleteById
+router.delete('/:id', bookingController.CancelBooking
     /*
     #swagger.tags = ['Booking']
     #swagger.security = [{ "bearerAuth": [] }]

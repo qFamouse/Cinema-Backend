@@ -18,6 +18,15 @@ class BookingController {
         res.send(await bookingService.Create(booking));
     }
 
+    async CancelBooking(req, res) {
+        let booking = {
+            userId: req.user.id,
+            ticketId: req.params.id
+        };
+
+        res.send(await bookingService.DeleteByQuery(booking));
+    }
+
     async EditById(req, res) {
         let booking = {
             userId: req.body.userId,

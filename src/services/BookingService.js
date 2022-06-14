@@ -45,6 +45,21 @@ class BookingService {
         return booking;
     }
 
+    async DeleteByQuery(bookingData) {
+        let ticket = await ticketRepository.GetById(bookingData.ticketId);
+        if (!ticket) {
+            throw new NotFoundError('Ticket not found');
+        }
+
+        await bookingRepository.DeleteByQuery(bookingData);
+
+        await ticketRepository.EditById(ticket.id, {
+            isOccupied: false
+        })
+
+        return true;
+    }
+
     async EditById(bookingId, booking) {
         return await bookingRepository.EditById(bookingId, booking);
     }
