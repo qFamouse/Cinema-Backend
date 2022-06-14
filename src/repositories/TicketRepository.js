@@ -24,6 +24,14 @@ class TicketRepository {
         })
     }
 
+    async GetById(ticketId) {
+        return await Ticket.findOne({
+            where: {
+                id: ticketId
+            }
+        })
+    }
+
     async Create(ticket) {
         return Ticket.create(ticket); // await redundant because is async method and create also async method
     }
