@@ -24,6 +24,8 @@ class BookingRepository {
 
     async GetDetailedActiveUserTickets(userId) {
         return await Booking.findAll({
+            raw: true,
+            nest: true,
             where: { userId: userId },
             include: [{
                 model: Ticket,

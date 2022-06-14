@@ -12,7 +12,23 @@ class BookingService {
     }
 
     async GetDetailedActiveUserTickets(userId) {
-        return await bookingRepository.GetDetailedActiveUserTickets(userId);
+        let activeTickets = await bookingRepository.GetDetailedActiveUserTickets(userId);
+
+        activeTickets.forEach(activeTicket => {
+            activeTicket.hall = activeTicket.ticket.place.hall;
+            activeTicket.ticket.place.hall = undefined;
+
+            activeTicket.place = activeTicket.ticket.place;
+            activeTicket.ticket.place = undefined;
+
+            activeTicket.movie = activeTicket.ticket.seance.movie;
+            activeTicket.ticket.seance.movie = undefined;
+
+            activeTicket.seance = activeTicket.ticket.seance;
+            activeTicket.ticket.seance = undefined;
+        })
+
+        return activeTickets;
     }
 
     async Create(bookingData) {
