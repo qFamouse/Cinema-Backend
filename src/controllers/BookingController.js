@@ -31,6 +31,12 @@ class BookingController {
         await bookingService.DeleteById(req.params.id);
         res.send('Ok');
     }
+
+    async GetActiveUserTickets(req, res) {
+        let userId = req.user.id;
+
+        res.send(await bookingService.GetDetailedActiveUserTickets(userId));
+    }
 }
 
 module.exports = new BookingController();

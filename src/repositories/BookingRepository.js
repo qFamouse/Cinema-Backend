@@ -1,6 +1,11 @@
 const User = require('../models/User');
 const Ticket = require('../models/Ticket');
 const Booking = require('../models/Booking');
+const Place = require('../models/Place');
+const Seance = require('../models/Seance');
+const Movie = require('../models/Movie');
+const Hall = require('../models/Hall');
+const {Op} = require("sequelize");
 
 
 class BookingRepository {
@@ -14,6 +19,34 @@ class BookingRepository {
             where: {
                 id: bookingId
             }
+        });
+    }
+
+    async GetDetailedActiveUserTickets(userId) {
+        return await Booking.findAll({
+            where: { userId: userId },
+            include: [{
+                model: Ticket,
+                include: [
+                    {
+                        model: Place,
+                        include: [{
+                            model: Hall
+                        }]
+                    },
+                    {
+                        model: Seance,
+                        include: [{
+                            model: Movie
+                        }],
+                        where: {
+                            date: {
+                                [Op.gte]: new Date()
+                            }
+                        }
+                    }
+                ]
+            }]
         });
     }
 

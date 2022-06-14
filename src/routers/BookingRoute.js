@@ -16,6 +16,11 @@ router.get('/', bookingController.GetAll
     #swagger.tags = ['Booking']
     #swagger.security = [{ "bearerAuth": [] }]
     */);
+router.get('/my_tickets', bookingController.GetActiveUserTickets
+    /*
+    #swagger.tags = ['Booking']
+    #swagger.security = [{ "bearerAuth": [] }]
+    */)
 router.get('/:id', bookingController.GetDetailedById
     /*
     #swagger.tags = ['Booking']

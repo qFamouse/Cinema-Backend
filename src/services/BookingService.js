@@ -11,6 +11,10 @@ class BookingService {
         return await bookingRepository.GetDetailedById(bookingId);
     }
 
+    async GetDetailedActiveUserTickets(userId) {
+        return await bookingRepository.GetDetailedActiveUserTickets(userId);
+    }
+
     async Create(bookingData) {
         let ticket = await ticketRepository.GetById(bookingData.ticketId);
         if (!ticket) {
