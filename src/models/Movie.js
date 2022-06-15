@@ -59,19 +59,19 @@ const Movie = sequelize.define('movie', {
         field: 'director'
     },
     actors: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         allowNull: false,
         unique: false,
         field: 'actors'
     },
     synopsis: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         allowNull: false,
         unique: false,
         field: 'synopsis'
     },
     youtube: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
         allowNull: false,
         unique: false,
         field: 'youtube'
