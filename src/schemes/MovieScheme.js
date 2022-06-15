@@ -37,7 +37,9 @@ const MovieScheme = {
 
             startRentalDate: Joi.string(),
 
-            endRentalDate: Joi.string()
+            endRentalDate: Joi.string(),
+
+            youtube: Joi.string().required()
         }
     ),
 
@@ -69,7 +71,9 @@ const MovieScheme = {
 
             startRentalDate: Joi.string(),
 
-            endRentalDate: Joi.string()
+            endRentalDate: Joi.string(),
+
+            youtube: Joi.string()
         }
     ),
 

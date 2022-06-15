@@ -26,7 +26,8 @@ class MovieController {
             actors: req.body.actors,
             synopsis: req.body.synopsis,
             startRentalDate: req.body.startRentalDate,
-            endRentalDate: req.body.endRentalDate
+            endRentalDate: req.body.endRentalDate,
+            youtube: req.body.youtube
         };
 
         res.send(await movieService.Create(movie));
@@ -44,7 +45,8 @@ class MovieController {
             actors: req.body.actors,
             synopsis: req.body.synopsis,
             startRentalDate: req.body.startRentalDate,
-            endRentalDate: req.body.endRentalDate
+            endRentalDate: req.body.endRentalDate,
+            youtube: req.body.youtube
         };
 
         res.send(await movieService.EditById(req.params.id, movie));
